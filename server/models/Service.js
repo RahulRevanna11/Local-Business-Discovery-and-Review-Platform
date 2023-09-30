@@ -1,6 +1,6 @@
 const mongoose=require("mongoose");
 
-const serviceSchama=new mongoose.Schema({
+const serviceSchema=new mongoose.Schema({
 
     name:{
         type:String,
@@ -19,7 +19,7 @@ const serviceSchama=new mongoose.Schema({
     avalableDays:{
        type:String,
     //    required:true,
-       default:Mon-Sat
+       default:"Mon-Sat"
     },
 
     GSTIN:{
@@ -49,6 +49,15 @@ const serviceSchama=new mongoose.Schema({
         type:Number,
         default:0,
     }
+    ,
+    category:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"SubCategory"
+    }
+    ,owner:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    }
 
 
 
@@ -56,4 +65,4 @@ const serviceSchama=new mongoose.Schema({
 
 })
 
-mongoose.export=mongoose.model("Service",serviceSchama);
+mongoose.export=mongoose.model("Service",serviceSchema);

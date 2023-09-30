@@ -1,6 +1,6 @@
 const mongoose=require("mongoose");
 
-const userSchama=new mongoose.Schema(
+const userSchema=new mongoose.Schema(
   {
     firstName:{
         type:String,
@@ -51,12 +51,12 @@ const userSchama=new mongoose.Schema(
         ref:"Profile"
      },
      
-         service:[
+         service:
         {
             type:mongoose.Schema.Types.ObjectId,
             ref:"Service"
         }
-     ],
+     ,
 
      image:{
         type:String,

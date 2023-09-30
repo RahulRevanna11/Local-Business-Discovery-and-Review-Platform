@@ -8,11 +8,12 @@ const fileUpload = require("express-fileupload");
 const userRoutes=require("./routes/User");
 console.log(userRoutes);
 const profileRoutes=require("./routes/Profile");
-const serviceRoutes=require("./routes/Service");
+const serviceRoutes=require("./routes/Services");
 
 const port=process.env.PORT||5000;
 
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(fileUpload({
     useTempFiles : true,
@@ -24,7 +25,7 @@ database();
 
 app.use("/api/v1/auth",userRoutes);
 app.use("/api/v1/profile",profileRoutes);
-app.use("/api/v1/service",serviceRoutesRoutes);
+app.use("/api/v1/service",serviceRoutes);
 
 app.get("/",(req,res)=>{
  
