@@ -39,5 +39,9 @@ app.get("/",(req,res)=>{
 
 
 app.listen(port,()=>{
+<<<<<<< HEAD
+    console.log(`your server is successfully activated at port ${port}`);
+=======
     console.log(`your server is activated at port ${port}`);
+>>>>>>> 1f8526928358f65db5fe589d4c73011ea2ae3a3f
 });
