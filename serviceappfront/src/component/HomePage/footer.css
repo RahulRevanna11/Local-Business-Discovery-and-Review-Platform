@@ -1,0 +1,59 @@
+footer{
+    display: inline;
+    background-color: #111;
+    width: 100vw;
+}
+
+.footer-navigator{
+    background-color: #544f4f7d;
+    color: #fff;
+    text-decoration: none;
+    font-family: inherit;
+    white-space: normal;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.footer-div2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    color: #fff;
+    background-color: #3c3f3ff3;
+}
+
+.footer-know-about-us{
+    width: 200px;
+}
+
+.footer-contact-us{ 
+    width: 200px;
+}
+.footer-contact-us div{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.footer-contact-us a{
+    margin: 10px;
+    margin-left: 20px;
+    padding-left: 10px;
+}
+.footer-make-money-with-us{
+    width:300px;
+}
+
+.footer-contact-us p{
+    color: #fff;
+}
+
+.footer-know-about-us p{
+    color: #fff;
+}
+
+.footer-make-money-with-us p{
+    color: #fff;
+}
