@@ -1,8 +1,10 @@
 import React from 'react'
 import "./card.css"
-const card = (props) => {
+import {Link} from "react-router-dom";
+const card = ({name,icon}) => {
+  console.log(name);
   return (
-    
+    <Link to={"/categories"}>
     <div class="card  ">
     <div class="align">
         <span class="red"></span>
@@ -10,11 +12,14 @@ const card = (props) => {
         <span class="green"></span>
     </div>
 
-    <h1>{props.title}</h1>
+    <h1>
+      {name}
+      </h1>
     <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde explicabo enim rem odio assumenda?
+      {/* {description} */}
     </p>
 </div>
+</Link>
   )
 }
 

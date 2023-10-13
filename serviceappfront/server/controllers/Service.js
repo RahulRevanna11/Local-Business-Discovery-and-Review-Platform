@@ -146,7 +146,7 @@ exports.getAllServices = async (req, res) => {
     try {
       const { serviceId } = req.body
       const userId = req.user.id
-      const serviceDetails = await Course.findOne({
+      const serviceDetails = await Service.findOne({
         _id: serviceId,
       })
         .populate({
@@ -183,13 +183,38 @@ exports.getAllServices = async (req, res) => {
   }
   
 
-exports.getSubCategoryServices
+exports.getSubCategoryServices=async (req,res)=>{
+const {subCategoryId}=req.body();
+
+if(!subCategoryId)
+{
+  return res.status(400).json({
+    success:false,
+    message:"subcatagoryid not present"
+  });
+
+}
+const subCategoryDetails=SubCategory.findById({_id:subCategoryId}).populate("service");
+
+if(!subCategoryDetails)
+{
+  return res.status(400).json({
+    success:false,
+    message:"subCategory not be fetched "
+  });
+}
+return res.status(400).json({
+  success:true,
+  data:subCategoryDetails.service,
+  message:"subCategoryDetails fetched  successfully"
+});
+}
 
   // Get a list of Service for a given Business
 exports.getPersonServices = async (req, res) => {
     try {
       
-      const BusinessId = req.user.id
+      const {BusinessId} = req.body
   
       const Services = await Services.find({
         Owner: BusinessId,
@@ -212,8 +237,8 @@ exports.getPersonServices = async (req, res) => {
 exports.uploadImages=async(req,res)=>{
   try
   {
-  const userId=req.user.id;
   const {serviceId}=req.body;
+ 
   const imageFile=req.files.imageFile;
   if(!imageFile)
   {

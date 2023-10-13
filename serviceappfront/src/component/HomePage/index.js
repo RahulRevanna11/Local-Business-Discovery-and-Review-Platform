@@ -14,7 +14,7 @@ function Home(){
         <SearchBar />
          <Div1 />
         <Div3 />
-        <Div2 />
+        {/* <Div2 /> */}
         <Div4 /> 
          {/* <Footer /> */}
         </>

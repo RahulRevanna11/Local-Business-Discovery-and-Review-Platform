@@ -107,14 +107,15 @@ exports.isAdmin=async(req,res,next)=>
     try{
        if(req.user.accountType!=="Admin")
        {
-         console.log("user"+req.user);
+        //  console.log("user"+req.user);
     return res.status(401).json({
         success:false,
         message:"this is protected route for Admin only",
         // error:error.message
     });
   
-       } console.log("this is isadmin function");
+       } 
+    //    console.log("this is isadmin function");
        next();
     }catch(error)
     {

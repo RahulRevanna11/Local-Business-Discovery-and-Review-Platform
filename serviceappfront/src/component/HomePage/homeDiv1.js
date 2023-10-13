@@ -1,6 +1,12 @@
 import React from "react";
 import Card from "./Card"
+import { useState } from "react";
+import { fetchCategories } from "../../services/oprerations/serviceAPIs";
+import { useEffect } from "react";
+// import { categories } from "../../services/apis";
 function HDiv1() {
+    
+    
     return (
         <div className="min-h-max border-2 border-slate-400 m-3 flex flex-col sm:flex-row rounded-xl
         md:flex-row">
@@ -19,15 +25,25 @@ function HDiv1() {
             <div className="
             sm:w-1/2 w-full grid grid-cols-3 gap-4 sm:grid-cols-3 place-content-center sm:p-3 p-1 md:grid-cols-3
             ">
+                {
+                    
+                    <Card name={"tender"} />
+                  
+                }
+                 {<Card name={"Services"} />  }
+                 {<Card name={"Blog"} />  }
+                 {<Card name={"Recent Activity"} />  }
+                 {<Card name={"User Reviews"} />  }
+                 {<Card name={"Popular"} />  }
+                {/* {
+                    allCategories.map((category)=>{
+                      return  <Card />
+                    })
+                } */}
                 {/* <div className="border-2 border-slate-400 h-48 w-36 rounded-xl p-2 text-center font-semibold">
-                    Services
+                   ies Services
                 </div> */}
-                <Card title={"service"}/>
-                <Card title={"service"}/>
-                <Card title={"service"}/>
-                <Card title={"service"}/>
-                <Card title={"service"}/>
-                <Card title={"service"}/>
+                
                 
                 {/* <div className="border-2 border-slate-400 h-48 w-36 rounded-xl p-2 text-center font-semibold">
                     Blog

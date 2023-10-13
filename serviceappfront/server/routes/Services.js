@@ -9,14 +9,14 @@ const {createCategory,showAllCategories}=require("../controllers/Category");
 
 const {createSubCategory,showAllSubCategories,SubcategoryPageDetails}=require("../controllers/SubCategory");
 
-const {createService,editService,getAllServices,getFullServiceDetails,getPersonServices,uploadImages}=require("../controllers/Service");
+const {createService,editService,getAllServices,getFullServiceDetails,getPersonServices,uploadImages,getSubCategoryServices}=require("../controllers/Service");
 
 
-const {
-    createRating,
-    getAverageRating,
-    getAllRating,
-  } = require("../controllers/RatingAndReviews")
+// const {
+//     // createRating,
+//     getAverageRating,
+//     getAllRating,
+//   } = require("../controllers/RatingAndReviews")
 
 
 
@@ -27,8 +27,8 @@ const {
   router.post("/uploadImage",auth,isBusiness,uploadImages);
 
 
-  router.get("/getAllServices",getAllServices);
-
+  router.get("/getAllServices",getSubCategoryServices);
+  router.get("/getSubCategoryServices",getAllServices);
   router.get("/getPersonServices",getPersonServices);
 
   router.get("/get",getFullServiceDetails);
@@ -47,9 +47,8 @@ router.get("/showAllSubCategories", showAllSubCategories)
 router.post("/getSubCategoryPageDetails", SubcategoryPageDetails)
 
   //Rating And Reviews
-  router.post("/createRating", auth, isUser, createRating)
-router.get("/getAverageRating", getAverageRating)
-router.get("/getReviews", getAllRating)
+  // router.post("/createRating", auth, isUser, createRating)
+// router.get("/getAverageRating", getAvS
 
 
 

@@ -1,6 +1,6 @@
 const { Mongoose } = require("mongoose");
-const SubCategory = require("../models/SubCategory");
-const Category = require("../models/Category");
+const SubCatagory = require("../models/SubCategory");
+const Catagory = require("../models/Category");
 function getRandomInt(max) {
     return Math.floor(Math.random() * max)
   }
@@ -13,18 +13,20 @@ exports.createSubCategory = async (req, res) => {
 				.status(400)
 				.json({ success: false, message: "All fields are required" });
 		}
-		const SubCategorysDetails = await SubCategory.create({
+		const SubCategorysDetails = await SubCatagory.create({
 			name: name,
 			description: description,
 		});
-
-     const categoryDetails=Category.findByIdAndUpdate({category}
+    console.log(` subcategoryDetails: ${SubCategorysDetails}`);
+// const categoryId=category._id;
+console.log(category._id)
+     const categoryDetails=await Catagory.findByIdAndUpdate({_id:category}
       ,{
         $push:{
           subCategory:SubCategorysDetails._id
         }
-      });
-		console.log(SubCategorysDetails);
+      },{new:true});
+		console.log(` categoryDetails: ${categoryDetails}`);
 		return res.status(200).json({
 			success: true,
 			message: "SubCategorys Created Successfully",
@@ -39,12 +41,16 @@ exports.createSubCategory = async (req, res) => {
 
 exports.showAllSubCategories = async (req, res) => {
 	try {
+
+		res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
         console.log("INSIDE SHOW ALL CATEGORIES");
-		const allSubCategorys = await SubCategory.find({}).populate("service");
+		const allSubCategorys = await SubCatagory.find({}).populate("service");
+    console.log(allSubCategorys)
 		res.status(200).json({
 			success: true,
 			data: allSubCategorys,
 		});
+
 	} catch (error) {
 		return res.status(500).json({
 			success: false,
@@ -60,7 +66,7 @@ exports.SubcategoryPageDetails = async (req, res) => {
       const { SubcategoryId } = req.body
       console.log("PRINTING SubCATEGORY ID: ", SubcategoryId);
       // Get courses for the specified Subcategory
-      const selectedSubCategory = await SubCategory.findById(SubcategoryId)
+      const selectedSubCategory = await SubCatagory.findById(SubcategoryId)
         .populate({
           path: "service",
           

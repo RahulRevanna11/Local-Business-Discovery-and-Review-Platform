@@ -4,44 +4,58 @@ import './homeDiv4.css';
 import icon from "../../assets/HomePage/tata.jpg"
 import axios from "axios";
 import ServiceCards from "./serviceDiv";
-
+import { fetchAllSubCategoriesServices } from "../../services/oprerations/serviceAPIs";
+import { apiConnector } from "../../services/apiConnector";
 function Div4() {
 
     // const ServicesMeta = "http://localhost:1000/services";
 
-    const [serviceDiv, setServiceDiv] = useState([{id:1},{id:2},{id:3},{id:4}]);
+    const [serviceDiv, setServiceDiv] = useState([]);
     // const [errorMessage, setError] = useState('');
 
-    // useEffect(() => {
-    //     axios.get(ServicesMeta)
-    //         .then((response) => {
-    //             setServiceDiv(response.data);
-    //         })
-    //         .catch((error) => {
-    //             setError('Error fetching data:', error.message);
-    //         });
-    // }, []);
+    useEffect(() => {
+     const getAllSubCatagory=async ()=>{
+         const r= await fetchAllSubCategoriesServices(); setServiceDiv(r.data.data);
 
+      }
+       getAllSubCatagory();
+     
+    //   console.log(`all subcategory: ${result}`)
+    }, []);
+        console.log(serviceDiv);
     return (
-        <div>{
-
-            serviceDiv.map((item) => (
-                <div className="max-h-max border-2 border-slate-400 m-3 p-4  rounded-lg grid-col-3 " key={item.id}>
-                    <h1 className="font-semibold text-3xl ml-10">{item.id}</h1>
+        <div>
+             
+               <div className="max-h-max border-2 border-slate-400 m-3 p-4  rounded-lg grid-col-3 " >
+                   
                     <div className="items-center max-h-max flex w-full justify-center">
+                      
+{
+                  serviceDiv.length>0&&  <div className="p-20">
+                   <div className="flex">
+                 <ServiceCards  subcategory={serviceDiv[0]} />
+                    <ServiceCards  subcategory={serviceDiv[0]} />
+                    </div>
+                    <div className="flex"> <ServiceCards  subcategory={serviceDiv[0]} />
+                    <ServiceCards  subcategory={serviceDiv[0]} />
+                    </div>
+  
+                    
 
-                        <ServiceCards  />
-
+                        </div>
+}
                     </div>
                 </div>
-            ))
 
 
-        }
+
+        
+           
+        
         </div>
+    )
 
-
-    );
+    
 }
 
 export default Div4;

@@ -34,13 +34,16 @@ exports.createCategory = async (req, res) => {
 
 exports.showAllCategories = async (req, res) => {
 	try {
-		console.log(Category)
-        console.log("INSIDE SHOW ALL CATEGORIES");
+		// console.log(Category)
 		const allCategorys = await Category.find({});
-		res.status(200).json({
+		
+		res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+		// console.log(allCategorys);
+		return  res.status(200).json({
 			success: true,
 			data: allCategorys,
 		});
+		
 	} catch (error) {
 		return res.status(500).json({
 			success: false,
