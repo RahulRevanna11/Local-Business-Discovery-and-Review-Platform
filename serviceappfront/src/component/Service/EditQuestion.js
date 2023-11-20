@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import {createQuestionAnswer} from "../../services/oprerations/serviceAPIs"
 import toast, { Toaster } from 'react-hot-toast';
 const EditQuestion = ({data}) => {
+
     console.log(data);
 const [info,setInfo]=useState({question:data?.question,answer:data?.answer})
 const [isAdd,setAdd]=useState(false);
@@ -12,7 +13,7 @@ const {token}=useSelector(state=>state.auth)
 const {service}=useSelector(state=>state.service)
 const handleChange=(event)=>{
 setInfo({...info,[event.target.name]:event.target.value})
-console.log(info)
+// console.log(info)
 
 }
 

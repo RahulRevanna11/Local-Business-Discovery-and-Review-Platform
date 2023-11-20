@@ -1,0 +1,576 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap");
+* {
+  scroll-behavior: smooth;
+}
+/* *,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+} */
+.font{
+  font-size: 10px;
+}
+/* body {
+  font-family: "Montserrat", sans-serif;
+} */
+
+/* ############# Utility Classes ############### */
+.container {
+  max-width: 1200px;
+  width: 90%;
+  margin: auto;
+}
+.btn {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 50px;
+  cursor: pointer;
+  outline: none;
+  margin-top: 1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.clearfix {
+  clear: both;
+}
+.btnpri {
+  color: #fff;
+  background: #16a083;
+}
+.chooseCity {
+  text-align: center;
+  color: black;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  width: 100%;
+}
+
+/* ############# Navbar ############## */
+/* for desktop mode  */
+.navbar input[type="checkbox"],
+.navbar .hamburgerlines {
+  display: none;
+}
+.navbar {
+  box-shadow: 0px 5px 10px 0px #aaa;
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  color: #000;
+  opacity: 0.85;
+  z-index: 999;
+}
+.navbarcontainer {
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  align-items: center;
+}
+.menuitems {
+  order: 2;
+  display: flex;
+}
+.menuitems li {
+  list-style: none;
+  margin-left: 1.5rem;
+  font-size: 1.8rem;
+}
+.navbar a {
+  color: #444;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+.navbar a:hover {
+  color: #117964;
+}
+.logo {
+  order: 1;
+  font-size: 3rem;
+}
+
+/* ############### Showcase ################### */
+.showcasearea {
+  height: 90vh;
+  background: url("../../assets/images/intro-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.showcasecontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 1.5rem;
+}
+.maintitle {
+  font-size: 5rem;
+}
+.subtitle {
+  font-size: 2.5rem;
+}
+/* ###################### About Us #################### */
+.aboutarea {
+  padding: 50px 0px;
+  background: #f5f5f7;
+}
+.aboutwrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+.aboutarea h2 {
+  font-size: 4rem;
+}
+.aboutarea p {
+  font-size: 1.6rem;
+  color: #555;
+}
+.aboutarea .small {
+  font-size: 1.6rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.aboutimage {
+  flex: 1 1 400px;
+  padding: 30px;
+  transform: translateX(150%);
+  animation: aboutimage-ani 2s ease-in-out forwards;
+}
+@keyframes aboutimage-ani {
+  100% {
+    transform: translate(0);
+  }
+}
+
+.abouttext {
+  flex: 1 1 400px;
+  padding: 30px;
+  margin: auto;
+  transform: translateX(-150%);
+  animation: abouttext-ani 2s ease-in-out forwards;
+}
+@keyframes abouttext-ani {
+  100% {
+    transform: translate(0);
+  }
+}
+
+.aboutimage img {
+  display: block;
+  height: 400px;
+  max-width: 100%;
+  margin: auto;
+  object-fit: cover;
+  object-position: right;
+}
+
+/* ############# Food Types #####################  */
+.foodarea {
+  padding: 5rem 0 10rem 0;
+}
+.foodarea h2 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 400px;
+  margin: 40px;
+  text-transform: uppercase;
+  color: #555;
+}
+.foodarea p {
+  color: white;
+  font-size: 1.2em;
+}
+.foodtype {
+  width: 400px;
+  height: 300px;
+}
+.foodcontainer {
+  display: flex;
+  justify-content: space-between;
+}
+.foodcontainer img {
+  display: block;
+  width: 100%;
+  min-height: 300px;
+  max-height: 300px;
+  margin: auto;
+  object-fit: cover;
+  object-position: center;
+}
+.imagecontainer {
+  margin: 0 1rem;
+  position: relative;
+}
+.imagecontent {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 2;
+  text-align: center;
+  transition: all 0.3s ease-in-out 0.1s;
+}
+.imagecontent h3 {
+  font-size: 2rem;
+  color: #fff;
+}
+.imagecontent a {
+  font-size: 1.2rem;
+}
+
+/* Overlays for food type */
+.imagecontainer::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.871);
+  z-index: 1;
+  transform: scaleY(0);
+  transform-origin: 100% 100%;
+  transition: all 0.3s ease-in-out;
+}
+.imagecontainer:hover::after {
+  opacity: 1;
+  transform: scaleY(1);
+}
+.imagecontainer:hover .imagecontent {
+  opacity: 1;
+  top: 40%;
+}
+
+/* ############## Food Menu ######################## */
+.menuheading {
+  font-size: 4rem;
+  text-align: center;
+  font-weight: normal;
+  color: #666;
+}
+.menucontainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 50px 0 30px 0px;
+}
+.menucontainer img {
+  display: block;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid black;
+}
+.menuitem {
+  display: flex;
+  flex: 1 1 600px;
+  justify-content: space-evenly;
+  margin-bottom: 3rem;
+}
+.menuimage {
+  min-height: 250px;
+  min-width: 250px;
+}
+.menudescription {
+  margin: auto 1.5rem;
+}
+.foodtitle {
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: #444;
+}
+.menudescription p {
+  font-size: 1.4rem;
+  color: #555;
+  font-weight: 500;
+}
+.menudescription .foodprice {
+  color: #117964;
+  font-weight: 700;
+}
+
+/* ################# Review Styling ######################  */
+.reviewarea {
+  padding: 5rem 0;
+  background: rgb(243, 243, 243);
+}
+.reviewtitle {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 400;
+  color: #555;
+}
+.reviewcontainer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  padding: 1rem;
+}
+.reviewbox .checked {
+  color: #ff9529;
+}
+.reviewbox.reviewtext {
+  margin: 1rem 1rem;
+  color: #444;
+}
+.reviewbox {
+  text-align: center;
+  padding: 1rem;
+}
+.customerimage img {
+  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  margin: auto;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+/* ############### Contact Styling ################### */
+.contactarea {
+  padding: 5rem 0;
+  background: rgb(226, 226, 226);
+}
+.contactcontainer {
+  display: flex;
+  background: #f5f5f7;
+}
+.contactimage {
+  width: 49%;
+}
+.contactimage img {
+  display: block;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+.formcontainer {
+  padding: 1rem;
+  width: 49%;
+  margin: auto;
+}
+.formcontainer input {
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  padding: 1rem 0;
+  box-shadow: none;
+  outline: none;
+  margin-bottom: 1rem;
+  color: #444;
+  font-weight: 500;
+}
+.formcontainer textarea {
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  padding: 1rem 0;
+}
+.formcontainer h2 {
+  font-size: 3rem;
+  font-weight: normal;
+  color: #444;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #444;
+}
+.formcontainer a {
+  font-size: 1.2rem;
+}
+
+/* ############### Footer #################### */
+.footer {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 3rem;
+  font-weight: normal;
+  color: #fff;
+  background: rgb(65, 65, 65);
+}
+
+/* ############### Making Website Responsive ############ */
+
+@media (max-width: 768px) {
+  .navbar {
+    opacity: 0.95;
+  }
+  .navbarcontainer input[type="checkbox"],
+  .navbarcontainer .hamburgerlines {
+    display: block;
+  }
+  .navbarcontainer {
+    display: block;
+    position: relative;
+    height: 64px;
+  }
+  .navbarcontainer input[type="checkbox"] {
+    position: absolute;
+    display: block;
+    height: 32px;
+    width: 40px;
+    top: 20px;
+    left: 20px;
+    z-index: 5;
+  }
+  .navbarcontainer .hamburgerlines {
+    display: block;
+    height: 40px;
+    width: 32px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .navbarcontainer .hamburgerlines .line {
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    background: #333;
+  }
+  .navbarcontainer .hamburgerlines .line1 {
+    transform-origin: 0% 0%;
+    transition: tranform 0.4s ease-in-out;
+  }
+  .navbarcontainer .hamburgerlines .line2 {
+    transition: tranform 0.4s ease-in-out;
+  }
+  .navbarcontainer .hamburgerlines .line3 {
+    transform-origin: 0% 100%;
+    transition: tranform 0.4s ease-in-out;
+  }
+  .navbar .menuitems {
+    padding-top: 100px;
+    background: #fff;
+    height: 100vh;
+    max-width: 300px;
+    transform: translateX(-150%);
+    display: flex;
+    flex-direction: column;
+    margin-left: -40px;
+    padding-left: 50px;
+    translate: tranform 0.5s ease-in-out;
+    box-shadow: 5px 0px 10px 0px #aaa;
+  }
+  .navbar .menuitems li {
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  .logo {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 3rem;
+  }
+}
+
+
+
+
+
+@media(max-width:768px){
+  .navbar{opacity: 0.95;}
+
+  .navbarcontainer input[type='checkbox'], .navbarcontainer .hamburgerlines{display: block;}
+
+  .navbarcontainer{display: block;position: relative;height: 64px;}
+
+  .navbarcontainer input[type='checkbox']{position: absolute;display: block;height: 32px;width: 40px;top: 20px;left: 20px;z-index: 5;opacity: 0;}
+
+  .navbarcontainer .hamburgerlines{display: block;height: 32px;width: 40px;position: absolute;top: 20px;left: 20px;z-index: 2;display: flex;flex-direction: column;justify-content: space-between;}
+
+  .navbarcontainer .hamburgerlines .line{display: block;height: 4px;width: 100%;border-radius: 10px;background: #333;} 
+
+  .navbarcontainer .hamburgerlines .line1{transform-origin: 0% 0%;transition: tranform 0.4s ease-in-out;}
+
+  .navbarcontainer .hamburgerlines .line2{transition: tranform  0.4s ease-in-out;} 
+
+  .navbarcontainer .hamburgerlines .line3{transform-origin: 0% 100%;transition: tranform 0.4s ease-in-out;}
+
+  .navbar .menuitems{padding-top: 100px;background: #fff;height: 100vh;max-width: 300px;transform: translateX(-150%);display: flex;flex-direction: column;margin-left: -40px;padding-left: 50px;translate: tranform 0.5s ease-in-out;box-shadow: 5px 0px 10px 0px #aaa;}
+
+  .navbar .menuitems li{margin-bottom: 3rem;font-size: 2rem;font-weight: 500;}
+
+  .logo{position: absolute;top: 10px;right: 15px;font-size: 3rem;}
+  
+  .navbarcontainer input[type='checkbox']:checked ~ .menuitems {transform: translateX(0);}
+
+  .navbarcontainer input[type='checkbox']:checked ~ .hamburgerlines .line1{transform: rotate(45deg);}
+
+  .navbarcontainer input[type='checkbox']:checked ~ .hamburgerlines .line2{transform: scaleY(0);}
+
+  .navbarcontainer input[type='checkbox']:checked ~ .hamburgerlines .line3{transform: rotate(-45deg);}
+
+}
+
+
+
+
+
+@media(max-width:768px) {
+  .foodcontainer {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  .foodtype:not(:last-child){
+      margin-bottom: 3rem;
+  }
+  .foodtype{
+      box-shadow: 5px 5px 10px 0px #aaa;
+  }
+  .imagecontainer{
+      margin: 0;
+  }
+  .subtitle{
+      font-size: 2rem;
+  }
+  .reviewcontainer{
+      flex-direction: column;
+      text-align: center;
+  }
+  .reviewbox{
+      border-bottom: 2px solid black;
+  }
+}
+
+@media(max-width:500px){
+  
+  .menuitem{
+      flex-direction: column;
+      text-align: center;
+
+  }
+  .menucontainer img{
+      margin: auto;
+  }
+  .formcontainer{
+      width: 90%;
+  }
+  .contactcontainer{
+      display: flex;
+      flex-direction: column;  
+  }
+  .contactimage{
+      width: 90%;
+      margin: 3rem auto;
+  }
+}

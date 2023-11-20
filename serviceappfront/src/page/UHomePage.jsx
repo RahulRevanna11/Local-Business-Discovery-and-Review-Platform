@@ -20,6 +20,7 @@ import review3 from './images/review3.jpg';
 import review4 from './images/review4.png';
 import review5 from './images/review5.jpg';
 import review6 from './images/review6.jpg';
+import Footer from "../component/common/Footer.js";
 
 const HomePage = () => {
     return (
@@ -341,9 +342,10 @@ const HomePage = () => {
                 </div>
             </section>
             {/* ################# Footer ################# */}
-            <footer className="footer">
+            {/* <footer className="footer">
                 <h2>City Inn &copy; all rights reserved</h2>
-            </footer>
+            </footer> */}
+        
         </>
     )
 }

@@ -48,12 +48,12 @@ const LocationComponent = () => {
         )}
 
         {/* Button to get user's location */}
-        <button
+        <p
           onClick={getLocation}
           className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
         >
           Get Location
-        </button>
+        </p>
       </div>
     </div>
   );

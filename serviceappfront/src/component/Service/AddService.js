@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { fetchAllSubCategoriesServices } from "../../services/oprerations/serviceAPIs";
+import { createService, fetchAllSubCategoriesServices } from "../../services/oprerations/serviceAPIs";
 import LocationComponent from "./LocationComponent";
 import CitySearch from "./CitySearch";
 // import {createSer}
 
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 const AddService = () => {
-
+  const { loading: profileLoading } = useSelector((state) => state.profile)
+  const { loading: authLoading } = useSelector((state) => state.auth)
+const {token}=useSelector(state=>state.auth)
   const{longitude,latitude}=useSelector(state=>state.location)
   console.log(longitude)
   console.log(latitude)
-  const [subcategories, setSubcategories] = useState(null);
+  const [subcategories, setSubcategories] = useState(null); 
+  const navigate=useNavigate();
   const dispatch=useDispatch();
   const fetchSubcategories = async () => {
     setLoading(true);
-    
+   
     const response = await fetchAllSubCategoriesServices();
    
     setLoading(false);
@@ -40,22 +44,35 @@ const AddService = () => {
 
   
 
-  const onSubmit = (data) => {
-    
+  const onSubmit = async(data) => {
+    setLoading(true);
     data.latitude=latitude;
     data.longitude=longitude;
     console.log("Form data submitted:", data);
+         const responce=await createService(data,token)
          
-   
+         setLoading(false);
+         
+         navigate("dashboard/my-services")
   };
 
-  if (loading) return <div className=".spinner"></div>;
+  if (loading) return (<div className=".spinner"></div>);
+
+  
   console.log(subcategories);
+
+  if (profileLoading || authLoading) {
+    return (
+      <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+        <div className="spinner"></div>
+      </div>
+    )
+  }
   return (
-    <div className="container mx-auto mt-8 overflow-none">
+    <div className="container mx-auto mt-8 ">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="max-w-lg mx-auto bg-white p-8 border border-gray-300 rounded shadow-md overflow-hidden"
+        className="max-w-lg mx-auto bg-white p-8 border border-gray-300 rounded shadow-md "
       >
         <h2 className="text-2xl font-semibold mb-6">Add Service</h2>
 
@@ -130,8 +147,8 @@ const AddService = () => {
         </div>
        <h1 className="text-xl font-bold mt-6">Add Your Location</h1>
      
-      <div className="flex gap-3" onClick={()=>setToggle(!toggle)}><button className={`${toggle?("p-2 bg-white "):("p-2 bg-gray-300 ")}`}>Get By Current Location</button>
-      <button className={`${toggle?("p-2 bg-gray-300  "):("p-2 bg-white ")}`}>Get By City Search</button>
+      <div className="flex gap-3" onClick={()=>setToggle(!toggle)}><p className={`${toggle?("p-2 bg-white "):("p-2 bg-gray-300 ")}`}>Get By Current Location</p>
+      <p className={`${toggle?("p-2 bg-gray-300  "):("p-2 bg-white ")}`}>Get By City Search</p>
      
       </div>
       

@@ -2,10 +2,10 @@ import React from 'react'
 import "./EnquireNow.css"
 const EnquireNow = () => {
   return (
-    <div className='body  all'>
+    <div className='body  all  '>
        
 <section >
-  <div class="content">
+  <div class="content ">
     <h2>Enquire </h2>
     <h2>Enquire </h2>
   </div>

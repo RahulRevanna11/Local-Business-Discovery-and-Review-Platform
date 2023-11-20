@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { useSelector } from "react-redux"
 import HorizontalCard from "../component/ServiceProviderList/SubCategory";
 import FilterOptions from "../component/button/FilterBtn";
 import { useParams } from "react-router";
@@ -29,12 +29,23 @@ let service=[];
     // setSubcategoryDeatils(res?.data?.data[0]?.subCategory);
    
   },[]);
+
+  const { loading: profileLoading } = useSelector((state) => state.profile)
+  const { loading: authLoading } = useSelector((state) => state.auth)
+
+  if (profileLoading || authLoading) {
+    return (
+      <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+        <div className="spinner"></div>
+      </div>
+    )
+  }
   return (
-    <div>
-      <FilterOptions />
+    <div className="mt-24">
+      {/* <FilterOptions /> */}
       {/* Filter Div */}
 
-      <div className="flex items-center justify-center lg:gap-20 flex-wrap">
+      <div className="flex items-center justify-center lg:gap-20 flex-wrap ">
         {subcategory?.map((item, key) => {
          return  <div key={key} className="flex md:flex:none "><Link
          
@@ -44,12 +55,14 @@ let service=[];
             <h5 
             class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
             >
-            {item.name}
+              <img src={item?.image} className="w-20 h-20" alt="">
+              </img>
+            {item?.name}
             </h5>
             <p 
             class="font-normal text-gray-700 dark:text-gray-400"
             >
-              {item.description}
+              {item?.description}
             </p>
           </Link>
           </div>

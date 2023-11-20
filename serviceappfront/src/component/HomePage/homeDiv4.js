@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import './homeDiv4.css';
+// import './homeDiv4.css';
 import icon from "../../assets/HomePage/tata.jpg"
 import axios from "axios";
 import ServiceCards from "./serviceDiv";
@@ -30,7 +30,7 @@ function Div4() {
                    
                     <div className="items-center max-h-max flex w-full justify-center">
                       
-{
+{/* {
                   serviceDiv.length>0&&  <div className="p-20">
                    <div className="flex">
                  <ServiceCards  subcategory={serviceDiv[0]} />
@@ -43,7 +43,9 @@ function Div4() {
                     
 
                         </div>
-}
+} */}
+
+
                     </div>
                 </div>
 

@@ -6,7 +6,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { FaMapMarkerAlt } from "react-icons/fa";
 const MapComponent = ({ locations, zoom, height, width, center, youserLocation}) => {
- console.log(youserLocation);
+ console.log(locations);
   // const markerIcon = new L.Icon({
   //   iconUrl: 'path-to-your-custom-marker-icon.png', // Specify the path to your custom marker icon
   //   iconSize: [25, 41],

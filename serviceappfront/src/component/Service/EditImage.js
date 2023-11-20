@@ -3,7 +3,9 @@ import { FiUpload } from 'react-icons/fi';
 
 import {UploadServiceImages} from "../../services/oprerations/serviceAPIs"
 import { useSelector } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router';
 const EditImage = ({Images}) => {
+  const navigate=useNavigate();
   const {token }=useSelector((state)=>state.auth)
   const {service }=useSelector((state)=>state.service)
   const [images, setImages] = useState([...Images]);
@@ -62,9 +64,10 @@ const EditImage = ({Images}) => {
 const res=await UploadServiceImages(data,token);
 console.log(res);
 setLoading(false);
+if(res)
  setImages([...images,res.secure_url])
 setNewImage(null);
-
+navigate('/dashboard/editservice')
 
 
   }

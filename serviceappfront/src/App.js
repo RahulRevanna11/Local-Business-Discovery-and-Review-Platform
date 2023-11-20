@@ -13,7 +13,7 @@ import Settings from "./component/Settings/index.js";
 import Service from "./component/Service/index";
 import EditService from "./component/Service/EditService.js"
 import ServiceEnquireList from "./component/Service/Inquire/ServiceInquireList.js";
-import UHomePage from "./page/UHomePage.jsx";
+import UHomePage from "./component/uHomePage/HomePage.js";
 import AddService from "./component/Service/AddService.js";
 import OpenRoute from "./component/Auth/OpenRoute.js";
 import PrivateRoute from "./component/Auth/PrivateRoute.js";
@@ -25,6 +25,9 @@ import KeywordServices from "./page/KeywordServices.js";
 import UserEnquireList from  "./component/Service/Inquire/UserEnquireList.js"
 import PreviousWork from "./component/Service/PreviousWork/PreviousWork.js";
 import Footer from "./component/common/Footer.js";
+import Navigation from "./component/uHomePage/Navigation.jsx";
+import HomePage from "./component/uHomePage/HomePage.js";
+import ProviousWorkWditMain from "./component/Service/PreviousWork/ProviousWorkWditMain.js";
 function App() {
   const locations = [
     { name: 'San Francisco', latitude: 37.7749, longitude: -122.4194 },
@@ -35,10 +38,11 @@ function App() {
   return (
     <div>
       <Navbar />
+      {/* <Navigation/> */}
       <MapComponent locations={locations}/>
       <Routes>
         <Route path="/contactUs" element={<ContactUs />} />
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<HomePage/>} />
         <Route
           path="/services/profile/:serviceId"
           element={<Profile />}
@@ -91,10 +95,13 @@ function App() {
            <Route path="/dashboard/my-services" element={<Service />} />
           <Route path="/dashboard/Inquiry" element={<ServiceEnquireList />} />
           <Route path="/dashboard/add-service" element={<AddService/>} />
-          <Route path="/dashboard/previous-work" element={<PreviousWork/>} />
+          <Route path="/dashboard/AddPast-Work" element={<PreviousWork/>} />
 
           <Route path="/dashboard/InquiryStatus" element={<UserEnquireList/>} />
+          <Route path="/dashboard/Past-Work" element={<ProviousWorkWditMain/>} />
+          
           </Route>
+         
         <Route
           path="/category/:categoryName/:categoryid"
           element={<ServiceProviders />}

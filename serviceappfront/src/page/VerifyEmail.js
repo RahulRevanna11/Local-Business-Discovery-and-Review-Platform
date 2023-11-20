@@ -15,9 +15,11 @@ function VerifyEmail() {
 
   useEffect(() => {
     // Only allow access of this route when user has filled the signup form
-    if (!signupData) {
+    console.log(signupData)
+    if (!signupData) { ;
       navigate("/signup");
     }
+   
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -27,7 +29,7 @@ function VerifyEmail() {
       accountType,
       firstName,
       lastName,
-      email,
+      mobile,
       password,
       confirmPassword,
     } = signupData;
@@ -37,7 +39,7 @@ function VerifyEmail() {
         accountType,
         firstName,
         lastName,
-        email,
+        mobile,
         password,
         confirmPassword,
         otp,
@@ -53,7 +55,7 @@ function VerifyEmail() {
           <div className="spinner"></div>
         </div>
       ) : (
-        <div className="max-w-[500px] p-4 lg:p-8">
+        <div className="max-w-[500px] p-4 lg:p-8 border-slate-400 border-2 rounded-3xl">
           <h1 className="text-richblack-5 font-semibold text-[1.875rem] leading-[2.375rem]">
             Verify Email
           </h1>
@@ -82,7 +84,7 @@ function VerifyEmail() {
             />
             <button
               type="submit"
-              className="w-full bg-yellow-50 py-[12px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900"
+              className="w-full bg-yellow-500 py-[12px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900"
             >
               Verify Email
             </button>
@@ -94,7 +96,7 @@ function VerifyEmail() {
               </p>
             </Link>
             <button
-              className="flex items-center text-blue-100 gap-x-2"
+              className="flex items-center text-blue-600 gap-x-2"
               onClick={() => dispatch(sendOtp(signupData.email))}
             >
               <RxCountdownTimer />

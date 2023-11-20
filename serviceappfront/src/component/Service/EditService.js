@@ -6,7 +6,7 @@ import { updateProfile } from "../../services/oprerations/SettingsAPI";
 import { editCourseDetails, fetchProfile } from "../../services/oprerations/serviceAPIs";
 import IconBtn from "../common/IconBtn";
 import EditQuestion from "./EditQuestion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import EditImage from "./EditImage";
 const genders = ["Male", "Female", "Non-Binary", "Prefer not to say", "Other"];
 
@@ -25,7 +25,9 @@ export default function EditProfile() {
 // console.log(` : ${token}`);
 
 const getData=async()=>{
-  await fetchProfile(user.service,true)
+  const responce=await fetchProfile(user?.service,true);
+  if(responce&&responce?.data?.data)
+   localStorage.setItem("service", JSON.stringify(responce?.data?.data))
 }
 useEffect(()=>{
 getData();
@@ -44,8 +46,9 @@ console.log('service '+service);
   return (
     <>
       <form onSubmit={handleSubmit(submitProfileForm)}>
+   
         {/* Profile Information */}
-        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-purple-900 p-8 px-12">
+        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700  p-8 px-12">
           <h2 className="text-lg font-semibold text-richblack-5">
             Service Details
           </h2>
@@ -127,7 +130,7 @@ console.log('service '+service);
                 {...register("year_of_establishment",)}
                 defaultValue={service?.year_of_establishment}
               ></input>
-              {errors.year_of_establishment && (
+              {errors?.year_of_establishment && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
                   Please enter your Experience.
                 </span>
@@ -355,11 +358,12 @@ console.log('service '+service);
           </button>
           <IconBtn type="submit" text="Save" />
         </div>
+        
       </form>
 
-      <EditQuestion data={service?.questionAnswer}/>
+      { service&& <EditQuestion data={service?.questionAnswer}/>}
 
-      <EditImage Images={service?.images}/>
+{ service&& <EditImage Images={service?.images}/>}
     </>
   );
 }

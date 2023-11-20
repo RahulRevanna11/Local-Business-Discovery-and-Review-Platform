@@ -5,13 +5,41 @@ import { toast } from "react-hot-toast";
 import { apiConnector } from "../apiConnector";
 const { CATEGORIES_API,CATEGORIES_DETAILS_API } = categories;
 const { SUB_CATEGORIES_API,SEARCH_KEYWORD_API } = subCategories;
-const { GET_FULL_SERVICE_API, GET_ALL_SERVICE_API,EDIT_SERVICE_API ,UPLOAD_IMAGE_API} = service;
+const { GET_FULL_SERVICE_API, GET_ALL_SERVICE_API,EDIT_SERVICE_API ,UPLOAD_IMAGE_API,CREATE_SERVICE_API} = service;
 const { CREATE_RATING_API } = ratingsEndpoints;
 const{CREATE_QUESTION_ANSWER_API,UPDATE_QUESTION_ANSWER_API,DELETE_QUESTION_ANSWER_API}=questionAnswerEndpoints;
 
 const {CREATE_ENQUIRY_API,UPDATE_ENQUIRY_API,DELETE_ENQUIRY_API,GET_USER_ENQUIRY_API}=EnquiryEndpoints
 
 const {CREATE_PROVIOUSWORK_API,UPDATE_PROVIOUSWORK_API,DELETE_PROVIOUSWORK_API,GET_PROVIOUSWORK_API}=ProviousWork;
+
+
+export const createService = async (data,token) => {
+  const toastId=toast.loading("Loading");
+  let result;
+  try {
+    const response = await apiConnector(
+      "POST",
+      CREATE_SERVICE_API,
+      data,
+      {
+        Authorization: `Bearer ${token}`,
+      }
+    );
+    console.log(`SERVICE CATAGORIES API RESPONSE ${response}`);
+    result = response;
+  } catch (error) {
+    console.log("COURSE_CATEGORY_API API ERROR............", error);
+    toast.error(error.message);
+    console.log(error);
+  }
+  // toast.dismiss(toastId);
+  console.log(`SERVICE CATAGORIES API RESPONSE ${result}`);
+  localStorage.setItem("service", JSON.stringify(result?.data?.data?.service))
+  toast.dismiss(toastId)
+  return result;
+  
+};
 
 export const fetchCategories = async () => {
   const toastId=toast.loading("Loading");
@@ -86,8 +114,9 @@ export const fetchProfile = async (serviceId,flag=false) => {
     console.log(`ALL SERVICE DETAILS API RESPONSE ${responce}`);
     result = responce;
 
-    if(flag)
-    localStorage.setItem("service", JSON.stringify(responce.data.data))
+    // if(flag)
+    // localStorage.setItem("service", JSON.stringify(responce.data.data))
+    toast.success("successfully")
   } catch (error) {
     console.log("ALL SERVICE DETAILS API ERROR............", error);
     toast.error(error.message);
@@ -160,6 +189,7 @@ export const createQuestionAnswer = async (question,answer,serviceId,token) => {
     });
     console.log(`CREATE QUESTION ANSWER API RESPONSE ${responce}`);
     result = responce;
+    toast.success("Updated Successfully")
   } catch (error) {
     console.log("SCREATE QUESTION ANSWER API RESPONSEERROR............", error);
     toast.error(error.message);
@@ -185,7 +215,7 @@ export const updateQuestionAnswer = async (QuestionId,question,answer,token) => 
     toast.error(error.message);
     console.log(error);
   }
-  // toast.dismiss(toastId);
+  toast.success(toastId);
   console.log(`UPDATE QUESTION ANSWER API RESPONSEE ${result}`);
   toast.dismiss(toastId)
   return result;

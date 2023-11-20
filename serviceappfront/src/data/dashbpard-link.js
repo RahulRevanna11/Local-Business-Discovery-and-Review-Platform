@@ -4,7 +4,8 @@ export const sidebarLinks = [
     id: 1,
     name: "My Profile",
     path: "/dashboard/my-profile",
-    icon: "VscAccount",
+    icon: "VscAccount"
+    ,
   },
  
   {
@@ -37,18 +38,32 @@ export const sidebarLinks = [
     icon: "VscHistory",
   },
   {
-    id: 7,
+    id: 6,
     name: "Inquiry Status",
     path: "/dashboard/InquiryStatus",
     type:"User",
     icon: "VscHistory",
   },
   {
-    id: 8,
+    id: 7,
     name: "Past Work",
-    path: "/dashboard/previous-work",
+    path: "/dashboard/Past-Work",
     type:"Business",
     icon: "VscHistory",
   },
-
+  {
+    id: 8,
+    name: "Add Past Work",
+    path: "/dashboard/AddPast-Work",
+    type:"Business",
+    icon: "VscHistory",
+  },
+  {
+    id: 9,
+    name: "Edit Service",
+    path: "/dashboard/editservice",
+    type:"Business",
+    icon: "VscHistory",
+  },
+  
 ];

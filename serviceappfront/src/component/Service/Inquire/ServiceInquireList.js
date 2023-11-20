@@ -12,6 +12,8 @@ const {GET_ENQUIRY_API}=EnquiryEndpoints;
     const {service}=useSelector(state=>state.service)
     const {token}=useSelector(state=>state.auth)
     console.log(service);
+
+
 const [enquires,setEnquires]=useState(null);
    useEffect(()=>{
     setLoading(true);
@@ -24,6 +26,7 @@ console.log(result);
       setLoading(false);
     }
 
+    if(service)
     getData();
    },[])
 
@@ -35,14 +38,14 @@ console.log(result);
 if(loading)
 return (<div className='spinner'></div>)
   return (
-    <div className="container mx-auto p-4 overflow-hidden">
+    <div className="container mx-auto p-4 ">
       <h2 className="text-2xl font-bold mb-4">Service Enquires List</h2>
       <ul className="space-y-4">
         {sortedEnquires?.map((enquire, index) => (
       < ServiceEnquireListCard key={index} data={enquire}/>
         ))}
       </ul>
-      <PreviousWork/>
+      {/* <PreviousWork/> */}
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 
 // import { formattedDate } from "../../../utils/dateFormatter"
 import IconBtn from "../common/IconBtn"
+import { formattedDate } from "../../utils/DateFormater"
 
 export default function MyProfile() {
   const { user } = useSelector((state) => state.profile)
@@ -11,6 +12,8 @@ export default function MyProfile() {
   const { loading: profileLoading } = useSelector((state) => state.profile)
   const { loading: authLoading } = useSelector((state) => state.auth)
 
+
+  
   if (profileLoading || authLoading) {
     return (
       <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
@@ -18,6 +21,7 @@ export default function MyProfile() {
       </div>
     )
   }
+  // formattedDate
   return (
     <>
       <h1 className="mb-14 text-3xl font-medium text-richblack-5">
@@ -119,8 +123,9 @@ export default function MyProfile() {
             <div>
               <p className="mb-2 text-sm text-richblack-600">Date Of Birth</p>
               <p className="text-sm font-medium text-richblack-5">
-                {/* {formattedDate(user?.additionalDetails?.dateOfBirth) ??
-                  "Add Date Of Birth"} */}
+                {formattedDate(user?.additionalDetails?.dateOfBirth) ??
+                  "Add Date Of Birth"}
+                  
               </p>
             </div>
           </div>

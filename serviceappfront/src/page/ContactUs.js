@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import contactUs from "../assets/contactUs/contactUs.jpg";
 import Navbar from "../component/common/navbar";
 import { Form } from "react-router-dom";
+import { useSelector } from "react-redux";
 const ContactUs = () => {
   const [data, handleData] = useState({
     firstName: "",
@@ -22,7 +23,19 @@ const ContactUs = () => {
     event.preventDefault();
 
     console.log(data);
+   
+  
   };
+  const { loading: profileLoading } = useSelector((state) => state.profile)
+  const { loading: authLoading } = useSelector((state) => state.auth)
+
+  if (profileLoading || authLoading) {
+    return (
+      <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+        <div className="spinner"></div>
+      </div>
+    )
+  }
   return (
     <div className="bg-gray 100">
         <Navbar/>

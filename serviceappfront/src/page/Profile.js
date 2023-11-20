@@ -11,9 +11,10 @@ import Navbar from '../component/common/Navbar';
 
 import QuestionAnswer from '../component/Profile/QuestionAnswer';
 import EnquireNow from '../component/Profile/EnquireNow';
-import ConfirmationModal from '../component/Profile/ConfirmationModal';
+
 import MapComponent from '../component/common/MapComponent';
 import { useSelector } from 'react-redux';
+import ImageSlider from '../component/common/ImageSlider';
 const Profile = () => {
   const [confirmationModal, setConfirmationModal] = useState(null);
 // const dispatch=useDispatchcon
@@ -58,17 +59,26 @@ getinfo();
 
      
     console.log(`id in profile:${profileData}`);
-   
+    const { loading: profileLoading } = useSelector((state) => state.profile)
+    const { loading: authLoading } = useSelector((state) => state.auth)
+  
+    if (profileLoading || authLoading) {
+      return (
+        <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+          <div className="spinner"></div>
+        </div>
+      )
+    }
   return (<div>
     {/* <Navbar/> */}
      <div className='lg:w-2/3 mx-auto  flex flex-col justify-center
-    md:w-11/12 sm:w-11/12 bg-white lg:gap-10'>
+    md:w-11/12 sm:w-11/12 bg-white lg:gap-10 mt-10'>
       {/* <Navbar /> */}
       <ProfileDescription {...profileData}/>
-       { profileData?.images&&<ProfileImages   images={profileData.images} />
-    }
-    <EnquireNow   
-              />
+       {/* { profileData?.images&&<ProfileImages   images={profileData.images} /> */}
+      {  profileData&&profileData?.images&&<ImageSlider images={profileData.images} count={3}/> }
+     
+{/*     
             <button  onClick={() =>setConfirmationModal({
                
                 btn1Text: "Logout",
@@ -79,7 +89,7 @@ getinfo();
               })
             }>
               Enquire Now
-            </button>
+            </button> */}
     
     <QuickInfo {...profileData}/>
      {/* {serviceId} */}
@@ -92,7 +102,10 @@ getinfo();
     <div className='w-100% h-72 m-3'>
     <h1 className='text-xl font-bold m-2'>Service Location</h1>
       {/* <MapComponent zoom={5}  locations={[{latitude:16.84,longitude:74.5987,name:"sangli"},{latitude:18.5204303,longitude: 73.8567437,name:"kupwad"}]} center={[16.04,745987]}/> */}
-      <MapComponent locations={locations} zoom={16} height="300px" width="100%" center={[16.8424571877499, 74.5994821593478]}  youserLocation={{lat,lng}} />
+     { profileData&&<MapComponent locations={[
+  { latitude: profileData?.latitude, longitude:profileData?.longitude ,name:profileData.name},
+
+]} zoom={16} height="300px" width="100%" center={[ profileData?.latitude, profileData?.longitude]}  youserLocation={{lat,lng}} />}
     </div>
 
  {
@@ -103,7 +116,7 @@ getinfo();
   // <MapComponent latitude={latitude} longitude={longitude}/>
 }
     </div>
-    {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
+
   </div>
     
   )

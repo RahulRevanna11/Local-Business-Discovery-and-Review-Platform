@@ -4,14 +4,48 @@ import { useNavigate } from "react-router-dom";
 
 // import { formattedDate } from "../../../utils/dateFormatter"
 import IconBtn from "../common/IconBtn";
+import { useEffect, useState } from "react";
+import { fetchProfile } from "../../services/oprerations/serviceAPIs";
 
 export default function MyProfile() {
+
+  const { loading: profileLoading } = useSelector((state) => state.profile)
+  const { loading: authLoading } = useSelector((state) => state.auth)
   const { user } = useSelector((state) => state.auth);
-  const { service } = useSelector((state) => state.service);
+  // const { service } = useSelector((state) => state.service);
+  const [serviceloading,setLoading]=useState(false);
+  const[service,setService]=useState(null);
+  const getData=async()=>{
+    setLoading(true);
+    const responce=await fetchProfile(user?.service,true);
+    if(responce&&responce?.data?.data)
+    setService(responce?.data?.data);
+
+    setLoading(false)
+    
+  }
+  
+  useEffect(()=>{
+  getData();
+  },[])
   const navigate = useNavigate();
-  // console.log(service);
-  if (!service) {
-    return <button>List Your service</button>;
+  console.log(service);
+  if (service?.length===0) {
+    return <button className="mt-16">List Your service</button>;
+  }
+  if (profileLoading || authLoading) {
+    return (
+      <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+        <div className="spinner"></div>
+      </div>
+    )
+  }
+ 
+  if(serviceloading)
+  return <div className="spinner"></div>
+  if(!service)
+  {
+    <p>Please Add the Service</p>
   }
   return (
     <>
@@ -113,21 +147,21 @@ export default function MyProfile() {
             <div>
               <p className="mb-2 text-sm text-richblack-600">Phone Number</p>
               <p className="text-sm font-medium text-richblack-5">
-                {service.contactNo ?? "Add Contact Number"}
+                {service?.mobile ?? "Add Contact Number"}
               </p>
             </div>
 
             <div>
               <p className="mb-2 text-sm text-richblack-600">GSTIN</p>
               <p className="text-sm font-medium text-richblack-5">
-                {service.GSTIN ?? "Add GSTIN"}
+                {service?.GSTIN ?? "Add GSTIN"}
               </p>
             </div>
 
             <div>
               <p className="mb-2 text-sm text-richblack-600">LandMark</p>
               <p className="text-sm font-medium text-richblack-5">
-                {service.landMark ?? "Add LandMark"}
+                {service?.landMark ?? "Add LandMark"}
               </p>
             </div>
             {/* <div>

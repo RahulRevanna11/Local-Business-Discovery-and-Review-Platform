@@ -37,7 +37,7 @@
   }
 } */
 .form-style {
-  @apply rounded-lg bg-gray-700 p-3 text-[16px] leading-[24px] text-gray-500 shadow-[0_1px_0_0] shadow-white placeholder:text-gray-400 focus:outline-none;
+  @apply rounded-lg border-spacing-1 border-gray-400 p-3 text-[16px] leading-[24px] text-gray-500 shadow-[0_1px_0_0] shadow-white placeholder:text-gray-400 focus:outline-none;
 }
 .section_heading {
   @apply text-2xl font-bold text-gray-500 lg:text-4xl;

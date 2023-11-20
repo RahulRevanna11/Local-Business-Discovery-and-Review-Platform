@@ -83,16 +83,23 @@
 
 //   return (
 //     <div>
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,
 //       {/* Tab */}
 //       <Tab tabData={tabData} field={accountType} setField={setAccountType} />
 //       {/* Form */}
 //       <form onSubmit={handleOnSubmit} className="flex w-full flex-col gap-y-4">
-//         <div className="flex gap-x-4">
-//           <label>
-//             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
-//               First Name <sup className="text-pink-200">*</sup>
-//             </p>
-//             <input
+//         <div className="flex 
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,
 //               required
 //               type="text"
 //               name="firstName"
@@ -100,9 +107,12 @@
 //               onChange={handleOnChange}
 //               placeholder="Enter first name"
 //               style={{
-//                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-//               }}
-//               className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,ichblack-5"
 //             />
 //           </label>
 //           <label>
@@ -113,14 +123,24 @@
 //               required
 //               type="text"
 //               name="lastName"
-//               value={lastName}
-//               onChange={handleOnChange}
-//               placeholder="Enter last name"
+//               value={lastName
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,ter last name"
 //               style={{
 //                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
 //               }}
 //               className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
 //             />
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,
 //           </label>
 //         </div>
 //         <label className="w-full">
@@ -137,22 +157,33 @@
 //             style={{
 //               boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
 //             }}
-//             className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5"
+//             className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-r
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,ichblack-5"
 //           />
 //         </label>
 //         <div className="flex gap-x-4">
 //           <label className="relative">
-//             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
-//               Create Password <sup className="text-pink-200">*</sup>
-//             </p>
-//             <input
+//             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblac
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,
 //               required
 //               type={showPassword ? "text" : "password"}
 //               name="password"
-//               value={password}
-//               onChange={handleOnChange}
-//               placeholder="Enter Password"
-//               style={{
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,
 //                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
 //               }}
 //               className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-10 text-richblack-5"
@@ -163,31 +194,71 @@
 //             >
 //               {showPassword ? (
 //                 <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,
 //               ) : (
 //                 <AiOutlineEye fontSize={24} fill="#AFB2BF" />
 //               )}
 //             </span>
 //           </label>
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,
 //           <label className="relative">
 //             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
 //               Confirm Password <sup className="text-pink-200">*</sup>
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,
 //             </p>
 //             <input
 //               required
 //               type={showConfirmPassword ? "text" : "password"}
-//               name="confirmPassword"
+//               name="confirmPas
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,sword"
 //               value={confirmPassword}
-//               onChange={handleOnChange}
+//               onChange={handle
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,OnChange}
 //               placeholder="Confirm Password"
 //               style={{
 //                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
 //               }}
-//               className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-10 text-richblack-5"
-//             />
-//             <span
+//               className="w-ful
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,
 //               onClick={() => setShowConfirmPassword((prev) => !prev)}
 //               className="absolute right-3 top-[38px] z-[10] cursor-pointer"
 //             >
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,
 //               {showConfirmPassword ? (
 //                 <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
 //               ) : (
@@ -197,8 +268,12 @@
 //           </label>
 //         </div>
 //         <button
-//           type="submit"
-//           className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900"
+
+//     // Setting signup data to state
+//     // To be used after otp verification
+//     dispatch(setSignupData(signupData))
+//     // Send OTP to user for verification
+//     dispatch(sendOtp(formData.email,nded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900"
 //         >
 //           Create Account
 //         </button>
@@ -215,14 +290,15 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 // import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-// import { sendOtp } from "../../services/oprerations/authAPI"
-// import { setSignupData } from "../../slices/authSlice"
+import { sendOtp } from "../../services/oprerations/authAPI"
+import { setSignupData } from "../../slices/authSlice"
 // import { ACCOUNT_TYPE } from "../../../utils/constants"
-// import Tab from "../common/Tab"
+import Tab from "../common/Tab"
+import { useDispatch } from "react-redux"
 
 function SignupForm() {
   const navigate = useNavigate()
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   // student or instructor
   const [accountType, setAccountType] = useState('User')
@@ -230,7 +306,7 @@ function SignupForm() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    email: "",
+    mobile: "",
     password: "",
     confirmPassword: "",
   })
@@ -238,7 +314,7 @@ function SignupForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
-  const { firstName, lastName, email, password, confirmPassword } = formData
+  const { firstName, lastName, mobile, password, confirmPassword } = formData
 
   // Handle input fields, when some value changes
   const handleOnChange = (e) => {
@@ -263,15 +339,15 @@ function SignupForm() {
 
     // Setting signup data to state
     // To be used after otp verification
-    // dispatch(setSignupData(signupData))
+    dispatch(setSignupData(signupData))
     // Send OTP to user for verification
-    // dispatch(sendOtp(formData.email, navigate))
+    dispatch(sendOtp(formData.mobile, navigate))
 
     // Reset
     setFormData({
       firstName: "",
       lastName: "",
-      email: "",
+      mobile: "",
       password: "",
       confirmPassword: "",
     })
@@ -295,7 +371,7 @@ function SignupForm() {
   return (
     <div>
       {/* Tab */}
-      {/* <Tab tabData={tabData} field={accountType} setField={setAccountType} /> */}
+      <Tab tabData={tabData} field={accountType} setField={setAccountType} />
       {/* Form */}
       <div className="mt-[100px] sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
@@ -339,15 +415,15 @@ function SignupForm() {
             </div>
             <label className="w-full">
               <p className="mb-1 text-sm leading-5 text-gray-500">
-                Email Address <sup className="text-pink-200">*</sup>
+                Contact Number <sup className="text-pink-200">*</sup>
               </p>
               <input
                 required
                 type="text"
-                name="email"
-                value={email}
+                name="mobile"
+                value={mobile}
                 onChange={handleOnChange}
-                placeholder="Enter email address"
+                placeholder="Enter Contact Number"
                 style={{
                   boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                 }}

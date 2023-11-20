@@ -33,7 +33,7 @@ export const Contact = (props) => {
   };
   return (
     <div>
-      <div id="contact">
+      <div id="contact" className="font">
         <div className="container">
           <div className="col-md-8">
             <div className="row">

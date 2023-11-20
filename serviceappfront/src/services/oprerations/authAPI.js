@@ -10,13 +10,14 @@ import { setLoading } from "../../slices/authSlice"
 const {LOGIN_API,RESETPASSWORD_API,RESETPASSTOKEN_API,SENDOTP_API,SIGNUP_API}=endpoints;
 
 
-export function sendOtp(email, navigate) {
+export function sendOtp(mobile, navigate) {
   return async (dispatch) => {
+    console.log(mobile)
     const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
       const response = await apiConnector("POST", SENDOTP_API, {
-        email,
+        mobile,
         checkUserPresent: true,
       })
       console.log("SENDOTP API RESPONSE............", response)
@@ -42,7 +43,7 @@ export function signUp(
   accountType,
   firstName,
   lastName,
-  email,
+  mobile,
   password,
   confirmPassword,
   otp,
@@ -56,7 +57,7 @@ export function signUp(
         accountType,
         firstName,
         lastName,
-        email,
+        mobile,
         password,
         confirmPassword,
         otp,
@@ -79,13 +80,13 @@ export function signUp(
   }
 }
 
-export function login(email, password, navigate) {
+export function login(mobile, password, navigate) {
     return async (dispatch) => {
       const toastId = toast.loading("Loading...")
       dispatch(setLoading(true))
       try {
         const response = await apiConnector("POST", LOGIN_API, {
-          email,
+          mobile,
           password,
         })
   

@@ -3,13 +3,14 @@ import { useParams } from "react-router";
 import { SearckKeyword } from '../services/oprerations/serviceAPIs';
 import { service } from '../services/apis';
 import HorizontalCard from '../component/ServiceProviderList/SubCategory';
+import { Link } from 'react-router-dom';
 
 
 const KeywordServices = () => {
     var { keyword,lat,lng } = useParams();
   const [services, setServices] = useState([]);
   const [loading,setLoading]=useState(false);
-  keyword=keyword.toLowerCase()
+  // keyword=keyword.toLowerCase()
   console.log(keyword.toLowerCase())
    keyword=keyword.split(":")[1].split(" ");
   const getServicesByKeyword=async(keyword)=>{
@@ -59,11 +60,13 @@ if(loading)
 return <div className='spinner'></div>
 
   return (
-    <div>
+    <div className='mt-20'>
       {
         services.map((data,index)=>{
-            return <HorizontalCard data={data}key={index}/>
+            return<Link to={`/services/profile/serviceId:${data._id}`}><HorizontalCard data={data}key={index}/>
+            </Link> 
         })
+      
       }
     </div>
   )

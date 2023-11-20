@@ -10,7 +10,7 @@
 .body {
   display: flex;
 
-  min-height: 5vh;
+  min-height: 2vh;
   align-items: center;
   justify-content: center;
 }
@@ -21,7 +21,7 @@
 
 .content h2 {
   color: #fff;
-  font-size: 4em;
+  font-size: 2em;
   position: absolute;
   transform: translate(-50%, -50%);
 }

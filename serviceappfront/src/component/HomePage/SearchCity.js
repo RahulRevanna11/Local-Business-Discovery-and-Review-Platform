@@ -88,7 +88,7 @@ const CitySearch = () => {
   };
   const dispatch = useDispatch();
   return (
-    <div className="container  mt-8 w-full">
+    <div className="container  mt-8 w-full z-20">
       <div className=" bg-white p-8 border border-gray-300 rounded shadow-md relative flex justify-between">
         <div className=" ">
           <div className=" flex items-center border-2 border-neutral-600  rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
@@ -159,8 +159,8 @@ const CitySearch = () => {
               type="text"
               //  value={query}
               //  onChange={handleInputChange}
-              className="appearance-none text-xl font-bold  border-none focus:outline-none w-[35vw] "
-              placeholder="Enter something what are you lokking for"
+              className="appearance-none text-xl font-bold  border-none focus:outline-none w-[70%] "
+              placeholder={"Enter something what are you lokking for"}
               onChange={handleChange} value={keyword}
             ></input>
           </div>
@@ -168,7 +168,7 @@ const CitySearch = () => {
      
         </div>
         <div  >
-            <button className="flex items-center gap-2 border-1 bg-green-600 p-2 rounded-full"onClick={handleSubmit} ><p className="text-lg">Get Result</p>
+            <button className="flex items-center gap-2 border-1 bg-green-600 p-2 rounded-lg"onClick={handleSubmit} ><p className="text-lg">Get Result</p>
             <BsArrowRightCircleFill size={25}/>
             </button>
           </div>

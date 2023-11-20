@@ -15,6 +15,7 @@ const QuickInfo = (props) => {
               Cash
           </p>
         </div>
+        
         <div>
           {" "}
           <p className="text-md text-gray-500">Year of Establishment</p>
@@ -31,6 +32,21 @@ const QuickInfo = (props) => {
             <p className="text-lg font-bold" >Mon-Sat</p>
           )}</p> 
         </div>
+
+        {
+         props?.GSTIN&&  <div>
+           <p className="text-md text-gray-500">GSTIN</p>
+       <p className="text-lg font-bold"> {(props?.GSTIN && <p>{props?.GSTIN}</p>) || (
+           <p className="text-lg font-bold" >Mon-Sat</p>
+         )}</p> 
+       </div>
+        }
+        {props?.GSTIN&&<div>
+            
+        <p className="text-lg font-bold"> {(props?.GSTIN && <p>GSTIN</p>) || (
+            <p className="text-lg font-bold" >{props.GSTIN}</p>
+          )}</p> 
+        </div>}
       </div>
     </div>
   );

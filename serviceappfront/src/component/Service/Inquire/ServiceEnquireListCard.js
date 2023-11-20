@@ -32,7 +32,7 @@ setResponce(e.target.value);
 console.log(response)
 }
   return (
-    <div className="bg-white shadow-md rounded-md p-6 w-full  my-4 overflow-hidden">
+    <div className="bg-white shadow-md rounded-md p-6 w-full  my-4 ">
      { !isUser&&<div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-semibold"></h2>
         <div className="space-x-2">
@@ -69,7 +69,7 @@ console.log(response)
           <input
             type="text"
             className="mt-1 p-2 w-full border rounded-md"
-            defaultValue={data.name}
+            defaultValue={data?.name}
             disabled
           />
         </div>
@@ -80,7 +80,7 @@ console.log(response)
           <input
             type="text"
             className="mt-1 p-2 w-full border rounded-md"
-            defaultValue={data.contact}
+            defaultValue={data?.contact}
             disabled
           />
         </div>
@@ -94,7 +94,7 @@ console.log(response)
           <input
             type="text"
             className="mt-1 p-2 w-full border rounded-md"
-            defaultValue={data.address}
+            defaultValue={data?.address}
             disabled
           />
         </div>
@@ -105,7 +105,7 @@ console.log(response)
           <input
             type="text"
             className="mt-1 p-2 w-full border rounded-md"
-            defaultValue={data.message}
+            defaultValue={data?.message}
             disabled
           />
         </div>
@@ -120,7 +120,7 @@ console.log(response)
             <input
               type="text"
               className="mt-1 p-2 w-full border rounded-md"
-              defaultValue={data.availableDate}
+              defaultValue={data?.availableDate}
               disabled
             />
           </div>
@@ -131,7 +131,7 @@ console.log(response)
             <input
               type="text"
               className="mt-1 p-2 w-full border rounded-md"
-              defaultValue={data.availableTime}
+              defaultValue={data?.availableTime}
               disabled
             />
           </div>

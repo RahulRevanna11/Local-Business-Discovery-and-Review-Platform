@@ -4,7 +4,8 @@ import LikeButton from '../button/LikeBtn';
 // import Chat from '../chat/chat';
 import { FaTimes } from 'react-icons/fa';
 import ReactStars from "react-rating-stars-component";
-
+import ImageSlider from '../common/ImageSlider';
+import unknown from "../../assets/unknown.png"
 const defaultData = {
     image: 'your_default_image_url',
     rating: '4.5',
@@ -23,10 +24,17 @@ const HorizontalCard = ({ data }) => {
     };
 
     return (
-        <div className="bg-white rounded-lg  shadow-lg overflow-hidden flex border-slate-400 border-2 w-[70%]">
-            <div className='h-52 w-52 m-5 border-slate-400 border-2'>
+        <div className="bg-white rounded-lg  shadow-lg  flex border-slate-400 border-2 w-[70%]">
+            <div className='h-50 w-52 m-5 border-slate-400 border-2'>
                 {/* <img src={data.image} alt="Item" className="w-full h-40 object-cover" /> */}
-            </div>{isOpen &&
+                {
+                    data&&!data?.images.length>0?(<img src={unknown} alt="Item" className="w-[100%] h-[100% ] " />):(
+                
+                    
+                    <ImageSlider images={data?.images} count={1} dots={false}  />)
+                }
+            </div>
+            {isOpen &&
                 <div className='fixed left-[33.33%] top-[33.33%] '>
                     <button onClick={toggleChat}>< FaTimes /></button>
                     {/* <Chat /> */}
@@ -46,7 +54,7 @@ const HorizontalCard = ({ data }) => {
                   // onChange={ratingChanged}
                   size={25}
                   isHalf={false}
-                  value={4}
+                  value={data.avgRating}
                   emptyIcon={<i className="far fa-star"></i>}
                   // halfIcon={<i className="fa fa-star-half-alt"></i>}
                   fullIcon={<i className="fa fa-star"></i>}
@@ -56,9 +64,12 @@ const HorizontalCard = ({ data }) => {
                 </div>
                 <div className="flex items-center mt-4">
                     <button className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 `rounded mr-2">Enquire</button>
-                    <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" onClick={toggleChat}>Chat</button>
+                   
                 </div>
-                <div className="text-lg mt-4 font-bold">Phone Number: 9785785652</div>
+                <div>
+                    <p>Year of Expirance {data?.year_of_establishment}</p>
+                </div>
+                {/* <div className="text-lg mt-4 font-bold">Phone Number: {data?.owner?.mobile}</div> */}
             </div>
         </div>
     );

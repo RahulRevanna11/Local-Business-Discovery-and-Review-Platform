@@ -37,12 +37,7 @@ const RatingAndReviers = (Data) => {
                 across the web
               </div>
             </div>
-            <p>
-              <Link to={`/addRating/${Data?._id}/${"empty"}/${Data?.name} `} className="inline-block bg-pink-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full custom-button">
-                
-                Tap to Rate
-              </Link>{" "}
-            </p>
+           
           </div>
           <div className="flex flex-col gap-2 mt-4">
             <h1 className="p-2 text-lg">User Reviews</h1>

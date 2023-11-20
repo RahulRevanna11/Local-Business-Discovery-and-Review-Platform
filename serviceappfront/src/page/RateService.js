@@ -12,6 +12,16 @@ const RateService = () => {
   const { serviceId, image, name } = useParams();
   console.log("htrgx");
   const { token } = useSelector((state) => state.auth);
+  const { loading: profileLoading } = useSelector((state) => state.profile)
+  const { loading: authLoading } = useSelector((state) => state.auth)
+
+  if (profileLoading || authLoading) {
+    return (
+      <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+        <div className="spinner"></div>
+      </div>
+    )
+  }
   return (
     <form className="flex flex-col  gap-7 lg:mx-8 md:mx-5 lg:p-20 md:p-10 border-box">
       <h1 className="text-3xl font-bold drop-shadow-xl">Write Review</h1>
