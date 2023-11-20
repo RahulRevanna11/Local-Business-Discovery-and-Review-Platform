@@ -9,7 +9,7 @@ const Header = () => {
                 <div className="showcasecontainer" >
                     <h1 className="maintitle">FAST, FREE WAY</h1>
                     {/* <h1 className="maintitle">TO GET EXPERTS</h1> */}
-                    <h1 className=" maintitle text-2xl p-5 "> <TypeAnimation
+                    <h1 className=" maintitle text-2xl p-5 text-yellow-400 font-bold shadow-md"> <TypeAnimation
       sequence={[
         'TO GET EXPERTS',
         1000, // wait 1s before replacing "Mice" with "Hamsters"
@@ -26,7 +26,7 @@ const Header = () => {
       wrapper="span"
       cursor={true}
       repeat={Infinity}
-      style={{  display: 'inline-block' }}
+      style={{  display: 'inline-block', color:"green" }}
     /></h1>
                           
                     <p className="subtitle">Search Across many Products & Services</p>
