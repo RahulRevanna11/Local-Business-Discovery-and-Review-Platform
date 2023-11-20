@@ -1,6 +1,7 @@
 const Enquiry =require("../models/Enquiry");
 const Service=require("../models/Service");
-const User=require("../models/User")
+const User=require("../models/User");
+const SMSSender = require("../utils/SMSSender");
 
 exports.createEnquiry=async(req,res)=>{
     try {
@@ -43,13 +44,14 @@ console.log(req.body)
             
         })
 
-
+         
         const userDetails= await User.findOneAndUpdate({_id:req.user.id},{
             $push:{
                 enquiry :result._id
             }
         }, {new:true});
      
+        await SMSSender(serviceDetails.mobile,"New Inquiry is sent to you Please check it out ")
         if(!userDetails)
         return res.status(400).json({
             success:false,
@@ -112,6 +114,8 @@ exports.updateEnquiry=async(req,res)=>{
         },
         { new: true } // This ensures you get the updated document in the result
     );
+
+
           //return rating
           if(!result) {
   
@@ -121,7 +125,13 @@ exports.updateEnquiry=async(req,res)=>{
               })
   
           }
-          
+             
+        const userDetails= await User.findOneAndUpdate({_id:result.sender},{
+            $push:{
+                enquiry :result._id
+            }
+        }, {new:true});
+            await SMSSender(userDetails.mobile,"Your Inquiry is  Upadeted to you Please check it out ")
         console.log(result);
           return res.status(200).json({
               success:true,

@@ -15,6 +15,12 @@ const catagorySchema=new mongoose.Schema({
                 
         ref:"SubCatagory"
      }],
+     image:
+        {
+            type:String,
+            required:true,
+        }
+     
 
 });
 module.exports=mongoose.model("Catagory",catagorySchema);

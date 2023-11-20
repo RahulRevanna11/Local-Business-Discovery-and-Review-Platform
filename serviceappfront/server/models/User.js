@@ -15,12 +15,16 @@ const userSchema=new mongoose.Schema(
         trim:true
     },
 
-    email:{
-        type:String,
+    // email:{
+    //     type:String,
+       
+    //     trim:true
+    // },
+   mobile:{
+    type:String,
         required:true,
         trim:true
-    },
-
+   },
     password:{
         type:String,
         required:true

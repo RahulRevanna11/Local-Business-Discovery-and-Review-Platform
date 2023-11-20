@@ -1,6 +1,7 @@
 const ProviousWork = require('../models/ProviousWork');
 const { uploadImageToCloudinary } = require("../utils/imageUploader")
 const Service=require("../models/Service");
+const SMSSender = require('../utils/SMSSender');
 exports.createProviousWork = async (req, res) => {
   try {
     const { OwnerName, completeDate, OwnerContact, address, cost,service } = req.body;
@@ -10,7 +11,7 @@ exports.createProviousWork = async (req, res) => {
    return  res.status(500).json({
         success:false,
          message: 'All fields are required' });
-  
+  // console.log(imag)
     // Your validation logic goes here
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).json({ error: "No files were uploaded." });
@@ -51,7 +52,7 @@ exports.createProviousWork = async (req, res) => {
           return res.status(404).json({ error: 'Service not found' });
         }
       }
-    
+    console.log(savedProviousWork);
    return  res.status(201).json({
         success:true,
         message:"Work posted successfully",
@@ -68,22 +69,25 @@ exports.createProviousWork = async (req, res) => {
 
 exports.updateProviousWork = async (req, res) => {
   try {
-    const { OwnerName, completeDate, OwnerContact, address, cost,service } = req.body;
+    const { OwnerName, completeDate, OwnerContact, address, cost,service,id } = req.body;
 
     // Your validation logic goes here
 
     const updatedProviousWork = await ProviousWork.findByIdAndUpdate(
-      req.user._id, 
+      {_id:id},
       { OwnerName, completeDate, OwnerContact, address, cost,service },
       { new: true }
     );
 
     if (!updatedProviousWork) {
-        res.status(500).json({
+      return   res.status(500).json({
             success:false,
              message: 'service not found' });
     }
 
+
+
+    
     // res.json(updatedProviousWork);
     return  res.status(201).json({
         success:true,
@@ -94,7 +98,7 @@ exports.updateProviousWork = async (req, res) => {
     console.error(error);
     return res.status(500).json({
         success:false,
-         error: 'Internal Server Error' });
+         message: 'Internal Server Error' });
   }
 };
 
@@ -132,7 +136,7 @@ exports.deleteProviousWork = async (req, res) => {
 
 exports.searchProviousWork = async (req, res) => {
   try {
-    const { service } = req.query;
+    const { service } = req.body;
 
     if (!service) {
       return res.status(400).json({ 

@@ -10,16 +10,30 @@ require("dotenv").config();
 const Service = require("../models/Service");
 const mongoose = require("mongoose");
 const  mailsender  = require("../utils/mailSender");
-
+const SMSSender =require("../utils/SMSSender")
 // send mail
-const send = async (email, otp) => {
+const send = async (mobile, otp) => {
+  console.log(otp);
+  // try {
+  //   const res = await mailsender(
+  //     email,
+  //     "verification email from studynotion",
+  //     otp
+  //   );
+  //   console.log(`Email sent Successfully + ${res}`);
+  // } catch (error) {
+  //   console.log("Error occured while sending mails" + error);
+  //   throw error;
+  // }
+
   try {
-    const res = await mailsender(
-      email,
-      "verification email from studynotion",
-      otp
-    );
-    console.log(`Email sent Successfully + ${res}`);
+    // const res = await SMSSender(
+    //   mobile,
+    //   `verification email from QuickLinks otp: ${otp}`,
+      
+    // );
+    // console.log(`Email sent Successfully + ${res}`);
+    console.log(`Email sent Successfully `);
   } catch (error) {
     console.log("Error occured while sending mails" + error);
     throw error;
@@ -30,10 +44,11 @@ const send = async (email, otp) => {
 exports.sendOTP = async (req, res) => {
   try {
     //fetch email
-    const { email } = req.body;
+    const { mobile } = req.body;
 
     //check if already present
-    const checkUserPresent = await User.findOne({ email });
+    const checkUserPresent = await User.findOne({ mobile });
+    console.log(mobile)
     if (checkUserPresent) {
       return res.status(401).json({
         success: false,
@@ -49,13 +64,13 @@ exports.sendOTP = async (req, res) => {
     });
     // console.log(otp);
 
-    const optPayload = { email, otp };
+    const optPayload = { mobile, otp };
 
     //create ans entry in dp
     const otpBody = await OTP.create(optPayload);
     console.log("OTPPAYLOAD :", optPayload );
     console.log("otp_BODY:" + otpBody);
-    send(email, otp);
+    send(mobile, otp);
 
     //return response
     return res.status(200).json({
@@ -79,18 +94,18 @@ exports.signUp = async (req, res) => {
     const {
       firstName,
       lastName,
-      email,
+      mobile,
       password,
       confirmPassword,
       accountType,
       otp,
     } = req.body;
-    // console.log("709277!firstName ||!lastName ||");
+    console.log(req.body);
     // validate password
     if (
       !firstName ||
       !lastName ||
-      !email ||
+      !mobile ||
       !password ||
       !confirmPassword ||
       !otp
@@ -112,7 +127,7 @@ exports.signUp = async (req, res) => {
     }
 
     //check user already exist or not
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ mobile });
     if (existingUser) {
       return res.status(400).json({
         success: false,
@@ -122,7 +137,7 @@ exports.signUp = async (req, res) => {
 
 
     //check most recent otp stored
-    const recentOtp = await OTP.find({ email })
+    const recentOtp = await OTP.find({ mobile })
       .sort({ createdAt: -1 })
       .limit(1);
     console.log("recent otp" + recentOtp);
@@ -162,7 +177,7 @@ exports.signUp = async (req, res) => {
     const user = await User.create({
       firstName,
       lastName,
-      email,
+      mobile,
       password: hashedPassword,
       accountType,
       additionalDetails: profileDetails._id,
@@ -195,10 +210,10 @@ exports.signUp = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     // Get email and password from request body
-    const { email, password } = req.body
+    const { mobile, password } = req.body
 
     // Check if email or password is missing
-    if (!email || !password) {
+    if (!mobile || !password) {
       // Return 400 Bad Request status code with error message
       return res.status(400).json({
         success: false,
@@ -207,7 +222,7 @@ exports.login = async (req, res) => {
     }
 
     // Find user with provided email
-    const user = await User.findOne({ email }).populate("additionalDetails").populate("service");
+    const user = await User.findOne({ mobile }).populate("additionalDetails").populate("service");
 
     // If user not found with provided email
     if (!user) {

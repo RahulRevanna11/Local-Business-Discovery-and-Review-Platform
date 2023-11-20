@@ -1,21 +1,34 @@
 const { Mongoose } = require("mongoose");
 const SubCatagory = require("../models/SubCategory");
 const Catagory = require("../models/Category");
+const { uploadImageToCloudinary } = require("../utils/imageUploader");
 function getRandomInt(max) {
     return Math.floor(Math.random() * max)
   }
 
 exports.createSubCategory = async (req, res) => {
 	try {
-		const { name, description,category } = req.body;
-		if (!name||!category) {
+		const { name, description,category,tags } = req.body;
+		if (!name||!category||!tags) {
 			return res
 				.status(400)
 				.json({ success: false, message: "All fields are required" });
 		}
+    const imageFile=req.files.imageFile;
+    const image=await uploadImageToCloudinary(imageFile,process.env.FOLDER_NAME,200,200);
+		console.log(image);
+    
+    if(!imageFile)
+    {
+      return res.status(200).json({
+          message:"image is not present"
+      })
+    }
 		const SubCategorysDetails = await SubCatagory.create({
 			name: name,
 			description: description,
+      image:image.secure_url,
+      tags
 		});
     console.log(` subcategoryDetails: ${SubCategorysDetails}`);
 // const categoryId=category._id;
@@ -144,6 +157,7 @@ exports.searchSubCategories = async (req,res) => {
   
 
     const {keyword}=req.body
+    // const keyword=['plumbing'];
       console.log(keyword)
     const result = await SubCatagory.find({ tags: { $in: keyword } }).populate('service');
 

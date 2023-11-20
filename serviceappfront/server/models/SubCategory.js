@@ -20,7 +20,10 @@ const subcatagorySchama=new mongoose.Schema({
             type:String,
         required:true, 
         }
-     ]
-
+     ],
+    image:{
+        type:String,
+        require:true
+    }
 });
 module.exports=mongoose.model("SubCatagory",subcatagorySchama);
