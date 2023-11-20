@@ -5,7 +5,7 @@ import { TypeAnimation } from 'react-type-animation';
 const Header = () => {
     return(
         <>
-            <section className="showcasearea font mt-20" id="showcase">
+            <section className="showcasearea " id="showcase">
                 <div className="showcasecontainer" >
                     <h1 className="maintitle">FAST, FREE WAY</h1>
                     {/* <h1 className="maintitle">TO GET EXPERTS</h1> */}

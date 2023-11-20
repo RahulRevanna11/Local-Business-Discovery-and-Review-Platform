@@ -121,7 +121,7 @@ const Services = () => {
           <p className="text-xl bg-blue-200 rounded-xl p-2 mt-4">{service?.enquiry?.length} Enquiry</p>
         </div>
         <div className="flex flex-col items-center">
-          <p className="text-2xl font-bold border-2 border-zinc-600 p-2">{service.name}</p>
+          <p className="text-2xl font-bold border-2 border-zinc-600 p-2">{service?.name}</p>
           <RatingStar size={50} count={5} value={3} edit={false} />
           <p className="bg-green-500 p-5 text-center rounded-2xl text-xl font-bold mt-4">
             {service?.ratingAndReviews?.length} Reviews
