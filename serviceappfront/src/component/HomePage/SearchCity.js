@@ -89,9 +89,9 @@ const CitySearch = () => {
   const dispatch = useDispatch();
   return (
     <div className="container  mt-8 w-full z-20">
-      <div className=" bg-white p-8 border border-gray-300 rounded shadow-md relative flex justify-between">
+      <div className=" bg-white p-8 border border-gray-300 rounded-3xl shadow-md relative flex justify-between">
         <div className=" ">
-          <div className=" flex items-center border-2 border-neutral-600  rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          <div className=" flex items-center border-2 border-neutral-600  rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-xl">
             {/* <label
               htmlFor="city"
               className="block text-sm font-medium text-gray-600"
@@ -104,7 +104,7 @@ const CitySearch = () => {
               id="city"
               value={query}
               onChange={handleInputChange}
-              className=" appearance-none text-xl font-bold w-full border-none focus:outline-none"
+              className=" appearance-none text-xl font-bold w-full border-none focus:outline-none rounded-xl"
               placeholder="Enter Location"
             />
           </div>
@@ -153,7 +153,7 @@ const CitySearch = () => {
         </div>
 
         <div>
-          <div className=" flex items-center border-2 border-neutral-600  rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          <div className=" flex items-center border-2 border-neutral-600  rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-xl">
             <LuCalendarSearch size={25}/>
             <input
               type="text"
