@@ -8,7 +8,7 @@ function HDiv1() {
     
     
     return (
-        <div className="min-h-max border-2 border-slate-400 m-3 flex flex-col sm:flex-row rounded-xl
+        <div className="min-h-max border-2 border-slate-400 m-3 flex flex-col sm:flex-row rounded-3xl
         md:flex-row">
             <div className="sm:w-1/2 w-full sm:m-3 mt-3 sm:mt-12">
                 <div className="font-bold text-2xl p-2 mt-8 ml-10">

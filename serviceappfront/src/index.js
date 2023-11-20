@@ -4,10 +4,29 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from "react-redux";
+import rootReducer from "./reducers";
+import {configureStore} from "@reduxjs/toolkit";
+import { Toaster } from "react-hot-toast";
+import Footer from './component/common/Footer';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const store = configureStore({
+  reducer:rootReducer,
+});
+
 root.render(
   <BrowserRouter>
-  <App/>
+  <Provider store={store}>
+   <div  > <App/>
+   <Toaster/>
+   {/* <Footer/> */}
+   </div>
+    
+ 
+  </Provider>
+ 
   </BrowserRouter>
 );
 

@@ -7,12 +7,26 @@ const serviceSchema=new mongoose.Schema({
         required:true,
         trim:true
     },
+    latitude: {
+        type: Number,
+        required: true,
+      },
+      longitude: {
+        type: Number,
+        required: true,
+      },
+    contactNo:{
+        type:String,
+       
+        trim:true
+    },
 
     year_of_establishment:{
         type:Number
     },
 
     mode_of_payment:{
+        type:String,
            enum:["Cash,UPI,Card"]
     },
 
@@ -52,7 +66,7 @@ const serviceSchema=new mongoose.Schema({
     ,
     subCategory:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"SubCategory"
+        ref:"SubCatagory"
     }
     ,owner:{
         type:mongoose.Schema.Types.ObjectId,
@@ -60,11 +74,34 @@ const serviceSchema=new mongoose.Schema({
     },
     images:[{
         type:String
-    }]
+    }],
+   ratingAndReviews:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"RatingAndReview"
+   }],
+   tags:[
+    {
+        type:String
+    }
+   ],
+  
+  questionAnswer:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"Question"
+  }   ],
 
-
-
-
+  
+  enquiry:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"Enquiry"
+  }   ],
+  averageRating:{
+    type:Number
+  },
+  proviousWorks:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"ProviousWork"
+  }
 
 });
 

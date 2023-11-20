@@ -26,7 +26,7 @@ function Div4() {
     return (
         <div>
              
-               <div className="max-h-max border-2 border-slate-400 m-3 p-4  rounded-lg grid-col-3 " >
+               <div className=" border-2 border-slate-400 m-3 p-4  rounded-lg grid-col-3 " >
                    
                     <div className="items-center max-h-max flex w-full justify-center">
                       

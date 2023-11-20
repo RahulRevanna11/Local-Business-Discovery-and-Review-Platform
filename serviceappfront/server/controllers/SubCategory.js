@@ -19,17 +19,18 @@ exports.createSubCategory = async (req, res) => {
 		});
     console.log(` subcategoryDetails: ${SubCategorysDetails}`);
 // const categoryId=category._id;
-console.log(category._id)
+console.log(category)
      const categoryDetails=await Catagory.findByIdAndUpdate({_id:category}
       ,{
         $push:{
           subCategory:SubCategorysDetails._id
         }
-      },{new:true});
+      },{new:true}).populate("subCategory");
 		console.log(` categoryDetails: ${categoryDetails}`);
 		return res.status(200).json({
 			success: true,
 			message: "SubCategorys Created Successfully",
+      data:categoryDetails
 		});
 	} catch (error) {
 		return res.status(500).json({
@@ -42,8 +43,8 @@ console.log(category._id)
 exports.showAllSubCategories = async (req, res) => {
 	try {
 
-		res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
-        console.log("INSIDE SHOW ALL CATEGORIES");
+		// res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+    //     console.log("INSIDE SHOW ALL CATEGORIES");
 		const allSubCategorys = await SubCatagory.find({}).populate("service");
     console.log(allSubCategorys)
 		res.status(200).json({
@@ -135,3 +136,65 @@ exports.SubcategoryPageDetails = async (req, res) => {
       })
     }
   }
+
+
+// Function to search for a keyword in subcategories
+exports.searchSubCategories = async (req,res) => {
+  try {
+  
+
+    const {keyword}=req.body
+      console.log(keyword)
+    const result = await SubCatagory.find({ tags: { $in: keyword } }).populate('service');
+
+console.log(result);
+    return res.status(200).json({
+      success: true,
+      data: {
+        result,
+       
+      },
+    })
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+      error: error.message,
+    })
+  }
+};
+
+
+
+exports.addTagsToSubCategory = async (req, res) => {
+  try {
+    const { tags, subcategoryId } = req.body;
+
+    // Validate if subcategory ID is provided
+    if (!subcategoryId) {
+      return res.status(400).json({ error: 'Subcategory ID is required.' });
+    }
+
+    // Find the subcategory by ID
+    const subcategory = await SubCatagory.findById(subcategoryId);
+
+    // Check if the subcategory exists
+    if (!subcategory) {
+      return res.status(404).json({ error: 'Subcategory not found.' });
+    }
+
+    // Add tags to the subcategory
+    subcategory.tags = subcategory.tags.concat(tags);
+
+    // Save the updated subcategory
+    await subcategory.save();
+
+    // Respond with the updated subcategory
+    res.status(200).json({ message: 'Tags added to subcategory successfully', subcategory });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+

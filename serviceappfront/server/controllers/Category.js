@@ -1,5 +1,6 @@
 const { Mongoose } = require("mongoose");
 const Category = require("../models/Category");
+const SubCategory = require("../models/SubCategory");
 require("dotenv").config();
 function getRandomInt(max) {
     return Math.floor(Math.random() * max)
@@ -45,6 +46,35 @@ exports.showAllCategories = async (req, res) => {
 		});
 		
 	} catch (error) {
+		return res.status(500).json({
+			success: false,
+			message: error.message,
+		});
+	}
+};
+
+
+exports.getSubCategories = async (req, res) => {
+	try {
+		console.log("ALL SUBCATEGORY  RESPONSE")
+		const {subCategoryId}=req.body;
+		console.log("ALL SUBCATEGORY  RESPONSE")
+		const subCategorys = await Category.find({_id:subCategoryId})
+		.populate({
+			path: "subCategory",
+			populate: {
+			  path: "service",
+			},
+		  })
+		//   .populate("subCategory").exec();
+		console.log(subCategorys);
+		return  res.status(200).json({
+			success: true,
+			data: subCategorys,
+		});
+		
+	} catch (error) {
+		console.log(error);
 		return res.status(500).json({
 			success: false,
 			message: error.message,

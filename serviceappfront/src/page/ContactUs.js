@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // rafce
 import contactUs from "../assets/contactUs/contactUs.jpg";
+import Navbar from "../component/common/navbar";
 import { Form } from "react-router-dom";
 const ContactUs = () => {
   const [data, handleData] = useState({
@@ -24,6 +25,7 @@ const ContactUs = () => {
   };
   return (
     <div className="bg-gray 100">
+        <Navbar/>
       <h1 className="text-2xl font-semibold">Contact US</h1>
       <div className="flex justify-around border-2 border-cyan-600 sm:flex-row">
         <div className="  p-5 ">

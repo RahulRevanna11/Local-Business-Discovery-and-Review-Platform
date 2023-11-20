@@ -7,7 +7,8 @@ exports.auth=async(req,res,next)=>{
 
     //extract token from req
     try{
-        const token=req.cookies.token||req.body.token||req.header("Authorisation").replace("Bearer","");
+        // console.log(req);
+        const token=req?.cookies?.token||req.body?.token||req.header("Authorization").replace("Bearer ", "");
         
         // if token missing
         if(!token)
@@ -17,7 +18,7 @@ exports.auth=async(req,res,next)=>{
                 message:"token mising "
             });
         }
-
+//  console.log(req.header("Authorization").replace("Bearer ", ""))
         // verify token
         try{
             const decode=await jwt.verify(token,process.env.JWT_SECRET);

@@ -7,7 +7,10 @@ const ratingAndReviewSchama=new mongoose.Schema({
                 required:true,
         ref:"User"
      },
-
+      createdAt:{
+type:Date,
+default:Date.now()
+      },
     rating:{
         type:Number,
         required:true
@@ -16,6 +19,17 @@ const ratingAndReviewSchama=new mongoose.Schema({
         type:String,
         required:true,
     }
+    ,service:{
+        type:mongoose.Schema.Types.ObjectId,
+        required:true,
+ref:"Service"
+    },
+    tags:[
+        {
+            type:String,
+        }
+    ]
+
 
 });
 module.exports=mongoose.model("RatingAndReview",ratingAndReviewSchama);

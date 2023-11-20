@@ -53,7 +53,7 @@ const userSchema=new mongoose.Schema(
      },
      
          service:
-        {
+       {
             type:mongoose.Schema.Types.ObjectId,
             ref:"Service"
         }
@@ -63,6 +63,10 @@ const userSchema=new mongoose.Schema(
         type:String,
         required:true
      },
+     enquiry:[{
+        type:mongoose.Schema.Types.ObjectId,
+          ref:"Enquiry"
+     }]
 
   }  
 )

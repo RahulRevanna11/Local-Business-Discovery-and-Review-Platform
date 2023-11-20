@@ -114,11 +114,13 @@ exports.getAllUserDetails = async (req, res) => {
 }
 
 exports.updateDisplayPicture = async (req, res) => {
-  try {
+  try { console.log(req.files);
     const displayPicture = req.files.displayPicture
+   
     const userId = req.user.id
     const image = await uploadImageToCloudinary(
       displayPicture,
+
       process.env.FOLDER_NAME,
       1000,
       1000
@@ -135,9 +137,11 @@ exports.updateDisplayPicture = async (req, res) => {
       data: updatedProfile,
     })
   } catch (error) {
+    console.log(error);
     return res.status(500).json({
       success: false,
       message: error.message,
     })
   }
 }
+

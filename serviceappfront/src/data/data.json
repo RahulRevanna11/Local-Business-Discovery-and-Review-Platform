@@ -1,0 +1,185 @@
+
+{
+  "Header": {
+    "title": "We are a Landing Page",
+    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sed commodo nibh ante facilisis bibendum."
+  },
+  "About": {
+    "paragraph": "At Quicklinks, we're on a mission to connect people with the best local businesses and services in a seamless and efficient way. Our platform is built on a foundation of trust, transparency, and convenience. With a passion for simplifying the search for local solutions, we've created a user-friendly environment that empowers both consumers and businesses. We believe in the power of local communities and are committed to promoting and supporting local enterprises.Quicklinks is not just a directory; it's a community, a bridge, and a solution. Join us in making local experiences better, easier, and more rewarding",
+    "Why": [
+      "Comprehensive Listing",
+      "User Reviews",
+      "Verified Information",
+      "Local Community Support"
+    ],
+    "Why2": [
+      "User friendly experience",
+      "Regular updates",
+      "Personalization",
+      "Customer Support"
+    ]
+  },
+  "Gallery": [
+    {
+      "title": "Relible Academy",
+      "largeImage": "img/portfolio/01-large.jpg",
+      "smallImage": "img/portfolio/mpsc-classes-thane.jpeg"
+    },
+    {
+      "title": "Kesari Tours",
+      "largeImage": "img/portfolio/02-large.jpg",
+      "smallImage": "img/portfolio/kesari_logo.png"
+    },
+    {
+      "title": "Patil Plumbers",
+      "largeImage": "img/portfolio/03-large.jpg",
+      "smallImage": "img/portfolio/plumber.webp"
+    },
+    {
+      "title": "Revanna Services",
+      "largeImage": "img/portfolio/04-large.jpg",
+      "smallImage": "img/portfolio/acrepair.jpg"
+    },
+    {
+      "title": "Society furniture",
+      "largeImage": "img/portfolio/05-large.jpg",
+      "smallImage": "img/portfolio/furniture.avif"
+    },
+    {
+      "title": "Sawant Brokers",
+      "largeImage": "img/portfolio/06-large.jpg",
+      "smallImage": "img/portfolio/buyorrent.webp"
+    },
+    {
+      "title": "Shatau Hospital",
+      "largeImage": "img/portfolio/07-large.jpg",
+      "smallImage": "img/portfolio/shatauhospital.jpg"
+    },
+    {
+      "title": "Falcon Security",
+      "largeImage": "img/portfolio/08-large.jpg",
+      "smallImage": "img/portfolio/security.webp"
+    },
+    {
+      "title": "Chinmay Car/Bikes Rentats",
+      "largeImage": "img/portfolio/09-large.jpg",
+      "smallImage": "img/portfolio/carrental.jpg"
+    }
+  ],
+  "Services": [
+    {
+      "icon": "fa fa-wordpress",
+      "name": "Education",
+      "text": "Study for the differnt exams like MPSC , UPSE , NDA , CAT , GATE, GRE, MHT-CET , JEE , NEET , SSC  RRB , Banking. Also language training, spoken english "
+    },
+    {
+      "icon": "fa fa-cart-arrow-down",
+      "name": "Home Services",
+      "text": "Domestic help service, Home appliances repairs and srvices, Furnitures dealers, Pest control sevices, Solar energy product, Plumbers, Wiremans, Carpenters, interior designers"
+    },
+    {
+      "icon": "fa fa-cloud-download",
+      "name": "Business Services",
+      "text": "Web designers, Internet service providers, generator dealers, Computer repair, Security related, Forex services, Charted accountants, Courier services"
+    },
+    {
+      "icon": "fa fa-language",
+      "name": "Properties - Buy,Rent,PG",
+      "text": "Property to buy, New residental project, Properties to rent, PG services, Mess services, and many more"
+    },
+    {
+      "icon": "fa fa-plane",
+      "name": "Health and Wellness",
+      "text": "Docters, Medicals, Beauty parlers, Gyms, Yoga classes, Zumba classes, skin care & treatment, Hair care centers, Aurvedic centers, Dietcians and Nutrionists"
+    },
+    {
+      "icon": "fa fa-plane",
+      "name": "Travel & Transport",
+      "text": "Air travel agent, Bus travel agent, Train travel agent, car rents, tempo rentals, bike rentals, various tour packages, domestic & international cargo "
+    }
+  ],
+  "Testimonials": [
+    {
+      "img": "img/testimonials/01.jpg",
+      "text": "\"I had an amazing dining experience at 'Hotel great Maratha'. The food was delicious, the service was impeccable, and the ambiance was perfect. I'll definitely be back!\"",
+      "name": "Sanjay Patil"
+    },
+    {
+      "img": "img/testimonials/02.jpg",
+      "text": "\"I called 'PATIL Plumbres' for a plumbing emergency, and they arrived promptly and fixed the issue efficiently. Their service saved the day!\"",
+      "name": "Sarvesh Kulkarni"
+    },
+    {
+      "img": "img/testimonials/03.jpg",
+      "text": "\"I love my gym 'Redekar gym'! The trainers are knowledgeable, the equipment is top-notch, and the classes are fantastic. It's the perfect place to stay in shape.\"",
+      "name": "Varun Dhavan"
+    },
+    {
+      "img": "img/testimonials/04.jpg",
+      "text": "\"I always leave Orchid Unisex Salon feeling like a million bucks! The stylists are talented, and the salon is clean and inviting. I highly recommend it\"",
+      "name": "Alia Bhat"
+    },
+    {
+      "img": "img/testimonials/05.jpg",
+      "text": "\"The team at Shatau Hospital is dedicated and professional. They provide top-notch healthcare services, and I always feel well taken care of when I visit.\"",
+      "name": "Virat Kohli"
+    },
+    {
+      "img": "img/testimonials/06.jpg",
+      "text": "\"I can't get enough of the coffee at Retro Cafe. It's the perfect place to unwind, and the baristas know how to make a mean cappuccino!\"",
+      "name": "Kiara Adavani"
+    }
+  ],
+  "Team": [
+    {
+      "img": "img/team/rahul2.jpg",
+      "name": "Rahul Revanna",
+      "job": "Full stack Developer"
+    },
+    {
+      "img": "img/team/vishwajeet.jpg",
+      "name": "Vishwajeet Sawant",
+      "job": "Frontend developer"
+    },
+    {
+      "img": "img/team/chinmay.jpg",
+      "name": "Chinmay Patil",
+      "job": "Frontend developer"
+    },
+    {
+      "img": "img/team/momin.jpg",
+      "name": "Prof. B.F.Momin",
+      "job": "Mentor"
+    }
+  ],
+  "Contact": {
+    "address": "Walchand College of Engineering, Sangli",
+    "phone": "+91 7364916612",
+    "email": "info@qicklinks.com",
+    "facebook": "fb.com",
+    "twitter": "twitter.com",
+    "youtube": "youtube.com"
+  },
+  "Features": [
+    {
+      "icon": "fa fa-comments-o",
+      "title": "Book Appointments",
+      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+    },
+    {
+      "icon": "fa fa-bullhorn",
+      "title": "Free to use ",
+      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+    },
+    {
+      "icon": "fa fa-group",
+      "title": "See the previous work done by serviceman",
+      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+    },
+    {
+      "icon": "fa fa-magic",
+      "title": "User friendly",
+      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+    }
+  ]
+}

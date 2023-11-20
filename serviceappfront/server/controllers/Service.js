@@ -3,6 +3,7 @@ const Service=require("../models/Service");
 const SubCategory=require("../models/SubCategory");
 const  mongoose = require('mongoose');
 
+const Enquiry = require('../models/Enquiry'); 
 const {uploadImageToCloudinary}=require("../utils/imageUploader");
 
 exports.createService=async (req,res)=>{
@@ -10,12 +11,12 @@ exports.createService=async (req,res)=>{
      console.log(`userid ${userId}`)
     const user=await User.findById({_id:userId});
     //get data
-    const{name,address,subCategory}=req.body;
+    const{name,address,subCategory,latitude,longitude}=req.body;
     if (
        
         !name||
         !subCategory ||
-        !address
+        !address||!longitude||!latitude
       ) {
         return res.status(400).json({
           success: false,
@@ -35,6 +36,12 @@ exports.createService=async (req,res)=>{
       }
 
       
+      if (personDetails?.service) {
+        return res.status(404).json({
+          success: false,
+          message: "Person have only one service",
+        })
+      }
        // Check if the tag given is valid
     const subCategoryDetail = await SubCategory.findById({_id:subCategory})
     if (!subCategoryDetail) {
@@ -42,19 +49,21 @@ exports.createService=async (req,res)=>{
         success: false,
         message: "subCategory Details Not Found",
       })
-    }console.log(Service);
+    }
+    // // console.log(S ervice);
     // subCategory=new mongoose.Types.ObjectId(subCategory);
-    // const subCategoryId=subCategoryDetail._id;
+    const subCategoryId=subCategoryDetail._id;
 
     const service= await Service.create({
         name,
         address,
-        subCategory:subCategoryDetail._id,owner:userId
+        subCategory:subCategoryDetail._id,owner:userId,
+        latitude,longitude
     });
-    
+    console.log("service "+service)
 
     const categoryDetails=await SubCategory.findByIdAndUpdate(
-        {_id:subCategory},{$push:{
+        {_id:subCategoryId},{$push:{
               service:service._id
         }},
         {new:true});
@@ -145,7 +154,8 @@ exports.getAllServices = async (req, res) => {
   exports.getFullServiceDetails = async (req, res) => {
     try {
       const { serviceId } = req.body
-      const userId = req.user.id
+      // const userId = req.user.id
+      console.log(req.body);
       const serviceDetails = await Service.findOne({
         _id: serviceId,
       })
@@ -155,24 +165,35 @@ exports.getAllServices = async (req, res) => {
             path: "additionalDetails",
           },
         })
-        .populate("subCategory")
+        // .populate("ratingAndReviews")
         .populate("ratingAndReviews")
-        
+        .populate({
+          path: "ratingAndReviews",
+          populate: {
+            path: "user",
+          },
+        })
+        .populate("questionAnswer")
+        .populate({
+          path: "enquiry",
+          populate: {
+            path: "sender",
+          },
+        })
         .exec()
   
      
   
       
   
-     
-  
+     console.log(` serviceDetails  ${serviceDetails}`)
   
       return res.status(200).json({
         success: true,
-        data: {
+        data: 
             serviceDetails,
          
-        },
+        
       })
     } catch (error) {
       return res.status(500).json({
@@ -184,7 +205,7 @@ exports.getAllServices = async (req, res) => {
   
 
 exports.getSubCategoryServices=async (req,res)=>{
-const {subCategoryId}=req.body();
+const {subCategoryId}=req.body;
 
 if(!subCategoryId)
 {
@@ -194,7 +215,7 @@ if(!subCategoryId)
   });
 
 }
-const subCategoryDetails=SubCategory.findById({_id:subCategoryId}).populate("service");
+const subCategoryDetails=await SubCategory.findById(subCategoryId).populate("service");
 
 if(!subCategoryDetails)
 {
@@ -205,7 +226,7 @@ if(!subCategoryDetails)
 }
 return res.status(400).json({
   success:true,
-  data:subCategoryDetails.service,
+  data:subCategoryDetails,
   message:"subCategoryDetails fetched  successfully"
 });
 }
@@ -240,28 +261,29 @@ exports.uploadImages=async(req,res)=>{
   const {serviceId}=req.body;
  
   const imageFile=req.files.imageFile;
-  if(!imageFile)
+  if(!imageFile||!serviceId)
   {
     return res.status(200).json({
         message:"image is not present"
     })
   }
-  const image=uploadImageToCloudinary(imageFile,process.env.FOLDER_NAME);
+  const image=await uploadImageToCloudinary(imageFile,process.env.FOLDER_NAME,200,200);
   console.log(image);
 
   // const user=User.findById({userId},{service:true});
   // const serviceId=user.service;
-  const service=Service.findByIdAndUpdate(
+  const service=await Service.findByIdAndUpdate(
     {_id:serviceId},
     {$push:{
-      service:image.secure_url
+      images:image.secure_url
     }},
     {new:true}
     );
-    return res.status(400).json({
+    return res.status(200).json({
       success:true,
       message:"image uploaded successfully",
-      data:image
+      data:image,
+      service:service
     })
 
   } catch(error){
@@ -275,3 +297,75 @@ exports.uploadImages=async(req,res)=>{
   }
 
 }
+
+
+
+
+exports.createEnquiry = async (req, res) => {
+  try {
+    const {  message, address, response="" ,serviceId} = req.body;
+    const sender=req.user.id
+    const newEnquiry = new Enquiry({
+      sender,
+      message,
+      address,
+      response,
+     service: serviceId
+
+    });
+    const savedEnquiry = await newEnquiry.save();
+
+    const service=await Service.findByIdAndUpdate(
+      {_id:serviceId},
+      {$push:{
+        enquiry:savedEnquiry._id
+      }},
+      {new:true}
+      );
+      console.log('service')
+       console.log(service);
+
+      const UserDetails=await User.findByIdAndUpdate(
+        {_id:sender},
+        {$push:{
+          enquiry:savedEnquiry._id
+        }},
+        {new:true}
+        );
+
+   
+    return res.status(400).json({
+      success:true,
+      message:"enquiry  done successfully",
+      data:savedEnquiry,
+     
+    })
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to create enquiry',
+  error:error });
+  }
+};
+
+
+exports.updateEnquiry = async (req, res) => {
+  try {
+    const {message, address, response,enquiryId } = req.body;
+
+    const updatedEnquiry = await Enquiry.findByIdAndUpdate(enquiryId, {
+     
+      message,
+      address,
+      response,
+    }, { new: true });
+    
+    if (!updatedEnquiry) {
+      return res.status(404).json({ error: 'Enquiry not found' });
+    }
+
+    res.json(updatedEnquiry);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to update enquiry' });
+  }
+};

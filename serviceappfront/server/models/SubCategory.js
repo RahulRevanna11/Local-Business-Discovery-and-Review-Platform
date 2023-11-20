@@ -15,6 +15,12 @@ const subcatagorySchama=new mongoose.Schema({
                 required:true,
         ref:"Service"
      }],
+     tags:[
+        {
+            type:String,
+        required:true, 
+        }
+     ]
 
 });
 module.exports=mongoose.model("SubCatagory",subcatagorySchama);

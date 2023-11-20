@@ -42,7 +42,7 @@ function ServiceCards({ subcategory }) {
           <p>{item.address}</p>
           {/* <FaBriefcaseMedical className="w-10  h-10" /> */}
           <p>{item.avalableDays}</p>
-          <Link to={`services${item._id}`}>
+          <Link to={`/services/profile/serviceId:${item._id}`}>
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded">
               Explore
             </button>

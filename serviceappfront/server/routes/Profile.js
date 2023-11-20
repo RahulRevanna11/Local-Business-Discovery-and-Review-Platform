@@ -17,7 +17,7 @@ router.put("/updateProfile", auth, updateProfile)
 router.get("/getUserDetails", auth, getAllUserDetails)
 // Get Enrolled Courses
 
-router.put("/updateDisplayPicture", auth, updateDisplayPicture)
+router.put("/updateDisplayPicture",auth,updateDisplayPicture)
 
 
 module.exports = router

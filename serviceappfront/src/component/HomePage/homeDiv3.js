@@ -39,7 +39,7 @@ function Div3() {
         <div className="flex flex-wrap justify-center items-center gap-12 p-4 bg-customBackground-100 rounded-xl p-10">
             {
                allCategories.map((item) => (
-                   <Link to={` catagory/${item.name}${item._id}`}  key={item.id}>
+                   <Link to={`category/:${item.name}/:${item._id}`}  key={item.id}>
                     <div
                         key={item._id}
                         className="flex flex-col items-center border-2 border-slate-400 p-2 rounded-lg w-40 h-36 text-align: center"

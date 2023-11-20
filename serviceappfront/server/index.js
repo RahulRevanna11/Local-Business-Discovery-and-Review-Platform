@@ -11,15 +11,19 @@ const profileRoutes = require("./routes/Profile");
 const serviceRoutes = require("./routes/Services");
 
 const port = process.env.PORT || 5000;
-
+app.use(cors({
+  origin: "*",
+ 
+}))
 app.use(cookieParser());
 app.use(express.json());
+
 app.use(
-  fileUpload({
-    useTempFiles: true,
-    tempFileDir: "/tmp/",
-  })
-);
+	fileUpload({
+		useTempFiles:true,
+		tempFileDir:"/tmp",
+	})
+)
 
 database();
 cloudinaryConnect();
@@ -35,11 +39,13 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",credentials:true
+//   })
+// );
+
+
 
 app.listen(port, () => {
   console.log(`your server is successfully activated at port ${port}`);
