@@ -12,6 +12,7 @@ export default function MyProfile() {
   const { loading: profileLoading } = useSelector((state) => state.profile)
   const { loading: authLoading } = useSelector((state) => state.auth)
   const { user } = useSelector((state) => state.auth);
+  
   // const { service } = useSelector((state) => state.service);
   const [serviceloading,setLoading]=useState(false);
   const[service,setService]=useState(null);
@@ -30,8 +31,8 @@ export default function MyProfile() {
   },[])
   const navigate = useNavigate();
   console.log(service);
-  if (service?.length===0) {
-    return <button className="mt-16">List Your service</button>;
+  if (!service) {
+    return <button className="mt-16 ">List Your service</button>;
   }
   if (profileLoading || authLoading) {
     return (

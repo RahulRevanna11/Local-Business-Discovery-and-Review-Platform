@@ -7,8 +7,12 @@ import CitySearch from "./CitySearch";
 // import {createSer}
 
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { useNavigate } from 
+"react-router";
+
 const AddService = () => {
+  const { service } = useSelector((state) => state.service);
+  // const navigate = useNavigate();
   const { loading: profileLoading } = useSelector((state) => state.profile)
   const { loading: authLoading } = useSelector((state) => state.auth)
 const {token}=useSelector(state=>state.auth)
@@ -67,6 +71,12 @@ const {token}=useSelector(state=>state.auth)
         <div className="spinner"></div>
       </div>
     )
+  }
+  if(service)
+  {
+    return <button onClick={()=>(navigate('/dashboard/my-services'))} className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full custom-btn mx-auto">
+      Your Services Already Listed 
+    </button>
   }
   return (
     <div className="container mx-auto mt-8 ">

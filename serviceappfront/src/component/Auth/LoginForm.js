@@ -36,7 +36,7 @@ function LoginForm() {
 
         <label className="block text-sm font-medium text-gray-700">
           <p className="mb-1 text-sm leading-5 text-gray-500">
-            Email Address <sup className="text-pink-500">*</sup>
+           Contact No <sup className="text-pink-500">*</sup>
           </p>
           <input
             required

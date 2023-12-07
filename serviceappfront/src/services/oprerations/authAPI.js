@@ -107,7 +107,8 @@ export function login(mobile, password, navigate) {
       //  if(response?.data?.user?.service) 
         localStorage.setItem("user", JSON.stringify(response.data.user))
                if(response?.data?.user?.service) 
-        localStorage.setItem("service", JSON.stringify(response.data.user.service))
+        localStorage.setItem("service", JSON.stringify(response?.data?.user?.service))
+      
         navigate("/")
       } catch (error) {
         console.log("LOGIN API ERROR............", error)

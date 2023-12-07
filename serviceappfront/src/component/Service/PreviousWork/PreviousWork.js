@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 // import { create } from '../../../../server/models/ProviousWork';
 import { createProviousWork } from '../../../services/oprerations/serviceAPIs';
-
+import { useNavigate } from "react-router-dom";
 const PreviousWork = () => {
     const [formData, setFormData] = useState({
         completeDate: '',
@@ -15,9 +15,13 @@ const PreviousWork = () => {
     });
 const {token}=useSelector(state=>state.auth);
 const {service}=useSelector(state=>state.service);
+const navigate = useNavigate();
+
     const [errors, setErrors] = useState({});
     if (!service) {
-        return <button>List Your service</button>;
+        return <button onClick={()=>(navigate('/dashboard/add-service'))} className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full custom-btn mx-auto">
+        Please Add your service
+      </button>
       }
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -94,7 +98,7 @@ const {service}=useSelector(state=>state.service);
         // If no errors, you can proceed with form submission or further processing
         console.log('Form submitted:', formData);
     };
-
+    
     return (
         <div className="flex items-center justify-center  mt-20">
             <div className="w-[70%]">

@@ -24,7 +24,7 @@ const HorizontalCard = ({ data }) => {
     };
 
     return (
-        <div className="bg-white rounded-lg  shadow-lg  flex border-slate-400 border-2 w-[70%]">
+        <div className="bg-white rounded-lg  mt-20 Sshadow-lg  flex border-slate-400 border-2 w-[70%]">
             <div className='h-50 w-52 m-5 border-slate-400 border-2'>
                 {/* <img src={data.image} alt="Item" className="w-full h-40 object-cover" /> */}
                 {

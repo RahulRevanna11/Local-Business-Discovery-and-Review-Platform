@@ -27,10 +27,10 @@ const ProfileDescription = (props) => {
   console.log(props);
   // const toaster = useToaster();
   const showToast = () => {
-    const toastId = toast.success("This is a toast notification!", {
-      duration: 10000, // Set the duration for the toast to be displayed
-    });
-    console.log(toastId);
+    // const toastId = toast.success("This is a toast notification!", {
+    //   duration: 10000, // Set the duration for the toast to be displayed
+    // });
+    // console.log(toastId);
   };
   return (
     <div class="flex flex-col md:flex-row md:align-top md:mt-10 rounded-lg gap-6 border-2 lg:mx-5 justify-between min-w-min">
@@ -45,7 +45,7 @@ const ProfileDescription = (props) => {
         <h2 class="text-black text-3xl font-bold from-stone-300 p-2">
           {props.name}
         </h2>
-      { props?.addres&& <h2 class="text-gray-500 text-xl font-bold from-stone-300 p-2">
+      { props?.address&& <h2 class="text-gray-500 text-xl font-bold from-stone-300 p-2">
           {props?.address}
         </h2>}
         <div class="flex flex-row gap-3 justify-center">

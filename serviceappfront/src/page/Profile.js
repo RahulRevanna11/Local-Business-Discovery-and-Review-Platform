@@ -72,7 +72,7 @@ getinfo();
   return (<div>
     {/* <Navbar/> */}
      <div className='lg:w-2/3 mx-auto  flex flex-col justify-center
-    md:w-11/12 sm:w-11/12 bg-white lg:gap-10 mt-10'>
+    md:w-11/12 sm:w-11/12 bg-white lg:gap-10 mt-16'>
       {/* <Navbar /> */}
       <ProfileDescription {...profileData}/>
        {/* { profileData?.images&&<ProfileImages   images={profileData.images} /> */}

@@ -78,8 +78,8 @@ const RateService = () => {
       </div>
       <button
         type="submit"
-        onClick={() =>
-          createRating({ rating: rating, review, serviceId: serviceId }, token)
+        onClick={async() =>
+          await createRating({ rating: rating, review, serviceId: serviceId }, token)
         }
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full inline-block mx-auto "
       >

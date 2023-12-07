@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import EditableField from './EditableField';
 import { getProviousWork, updateProviousWork } from '../../../services/oprerations/serviceAPIs';
 import { useSelector } from 'react-redux';
-
+import { useNavigate } from 
+"react-router";
 const ProviousWorkEdit = ({props}) => {
   const [formData,setFormData ] = useState({
     completeDate: props.completeDate,
@@ -19,9 +20,13 @@ const ProviousWorkEdit = ({props}) => {
 setLoading(true);
 formData.service=service._id;
 formData.id=props._id;
-if (!service) {
-  return <button>List Your service</button>;
-}
+const navigate=useNavigate();
+if(!service)
+  {
+    return <button onClick={()=>(navigate('/dashboard/add-service'))} className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full custom-btn mx-auto">
+      Please Add your service
+    </button>
+  }
  
 
 const data=await updateProviousWork(formData,token);

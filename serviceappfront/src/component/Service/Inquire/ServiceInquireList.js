@@ -5,14 +5,13 @@ import { useSelector } from 'react-redux';
 import { apiConnector } from '../../../services/apiConnector';
 import ServiceEnquireListCard from './ServiceEnquireListCard';
 import PreviousWork from '../PreviousWork/PreviousWork';
-
+import {  useNavigate } from "react-router-dom";
 const ServiceEnquireList = () => {
   const [loading,setLoading]=useState(false);
 const {GET_ENQUIRY_API}=EnquiryEndpoints;
     const {service}=useSelector(state=>state.service)
     const {token}=useSelector(state=>state.auth)
     console.log(service);
-
 
 const [enquires,setEnquires]=useState(null);
    useEffect(()=>{
@@ -30,11 +29,16 @@ console.log(result);
     getData();
    },[])
 
-   
+   const navigate=useNavigate();
   const sortedEnquires = enquires?.sort((a, b) => a.createdAt - b.createdAt);
   console.log(enquires);
 
-
+if(!service)
+{
+  return <button onClick={()=>(navigate('/dashboard/add-service'))} className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full custom-btn mx-auto">
+    Please Add your service
+  </button>
+}
 if(loading)
 return (<div className='spinner'></div>)
   return (

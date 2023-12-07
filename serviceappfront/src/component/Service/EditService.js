@@ -14,6 +14,7 @@ export default function EditProfile() {
   const { user } = useSelector((state) => state.profile);
   const { service } = useSelector((state) => state.service);
   const { token } = useSelector((state) => state.auth);
+  
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -32,7 +33,12 @@ const getData=async()=>{
 useEffect(()=>{
 getData();
 },[])
-
+if(!service)
+  {
+    return <button onClick={()=>(navigate('/dashboard/add-service'))} className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full custom-btn mx-auto">
+    Please Add your service
+  </button>
+  }
 console.log('service '+service);
   const submitProfileForm = async (data) => {
     console.log("Form Data - ", data)

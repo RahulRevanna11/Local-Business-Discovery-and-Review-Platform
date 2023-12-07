@@ -101,6 +101,7 @@
 // };
 
 // export default Services;
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import ReactStars from "react-rating-stars-component";
 import download from "../../assets/download.jpeg";
@@ -112,7 +113,13 @@ import PreviousWork from "./PreviousWork/PreviousWork";
 
 const Services = () => {
   const { service } = useSelector((state) => state.service);
-
+  const navigate = useNavigate();
+  if(service===null)
+  {
+    return <button onClick={()=>(navigate('/dashboard/add-service'))} className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full custom-btn mx-auto">
+      Please Add your service
+    </button>
+  }
   return (
     <div className="w-full p-8">
       <div className="flex justify-center items-center gap-8 border-2 border-slate-400 p-6 rounded-2xl">
@@ -129,7 +136,7 @@ const Services = () => {
           <div className="grid grid-cols-2 gap-6 mt-4">
             {[1, 2, 3, 4, 5].map((rating) => (
               <div key={rating} className="flex items-center gap-6 border-3 border-stone-500 p-4 rounded-xl">
-                <p className="text-center bg-red-300 text-red-700 rounded-xl p-4">{rating * 10}</p>
+                <p className="text-center bg-red-300 text-red-700 rounded-xl p-4">{rating }</p>
                 <RatingStar size={25} count={5} value={rating} edit={false} />
               </div>
             ))}

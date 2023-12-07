@@ -27,12 +27,12 @@ const send = async (mobile, otp) => {
   // }
 
   try {
-    // const res = await SMSSender(
-    //   mobile,
-    //   `verification email from QuickLinks otp: ${otp}`,
+    const res = await SMSSender(
+      mobile,
+      `verification email from QuickLinks otp: ${otp}`,
       
-    // );
-    // console.log(`Email sent Successfully + ${res}`);
+    );
+    console.log(`Email sent Successfully + ${res}`);
     console.log(`Email sent Successfully `);
   } catch (error) {
     console.log("Error occured while sending mails" + error);

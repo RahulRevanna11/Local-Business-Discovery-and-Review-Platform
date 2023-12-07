@@ -43,11 +43,8 @@ exports.createRating = async (req, res) => {
     const ServiceDetails = await Service.find(
       { _id: serviceDetails._id },
     );
-    ServiceDetails.averageRating=( ServiceDetails.averageRating*ServiceDetails.ratingAndReviews.length+ rating)/(ServiceDetails.ratingAndReviews.length+1)
-    ServiceDetails.ratingAndReviews.push(ratingReview._id)
-    const updatedServiceDetails=  await serviceDetails.save();
     const updatedService= await Service.findByIdAndUpdate(
-      { _id: serviceDetails._id },
+      { _id: serviceId },
       {
         $push: {
           ratingAndReviews: ratingReview._id,
@@ -55,6 +52,13 @@ exports.createRating = async (req, res) => {
       },
       { new: true }
     );
+    console.log(serviceDetails);
+    if(updatedService.ratingAndReviews)
+    updatedService.averageRating=( updatedService.averageRating*updatedService.ratingAndReviews.length+ rating)/(updatedService.ratingAndReviews.length+1)
+  else serviceDetails.averageRating=rating;
+    ServiceDetails.ratingAndReviews.push(ratingReview._id)
+    const updatedServiceDetails=  await updatedService.save();
+  
 
     // averageRating;
     console.log(updatedServiceDetails);
