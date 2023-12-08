@@ -97,7 +97,7 @@ export const  fetchAllSubCategoriesServices= async (id) => {
     console.log(error);
   }
   // toast.dismiss(toastId);
-  console.log(`ALL SUB_CATEGORY_API API  ${result.data}`);
+  console.log(`ALL SUB_CATEGORY_API API  ${result?.data}`);
   toast.dismiss(toastId)
   return result;
 };

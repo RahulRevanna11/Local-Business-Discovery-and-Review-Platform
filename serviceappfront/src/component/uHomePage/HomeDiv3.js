@@ -16,8 +16,9 @@ function HomeDiv3() {
                 const res = await fetchCategories();
                 // const category_id = 
                 // res?.data?.data?.filter((ct) => ct.name.split(" ").join("-").toLowerCase() === catalogName)[0]._id;
+                if(res&&res?.data)
                 setCategries(res?.data?.data);
-                console.log(res?.data?.data);
+                // console.log(res?.data?.data);
             }
             getCategories();
         },[]);

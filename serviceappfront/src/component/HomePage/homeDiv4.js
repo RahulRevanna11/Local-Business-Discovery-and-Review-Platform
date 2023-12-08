@@ -15,7 +15,8 @@ function Div4() {
 
     useEffect(() => {
      const getAllSubCatagory=async ()=>{
-         const r= await fetchAllSubCategoriesServices(); setServiceDiv(r.data.data);
+         const r= await fetchAllSubCategoriesServices();
+          setServiceDiv(r?.data?.data);
 
       }
        getAllSubCatagory();

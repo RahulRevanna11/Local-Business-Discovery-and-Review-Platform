@@ -24,6 +24,7 @@ const locations = [
   { latitude: 16.8424571877499, longitude: 74.5994821593478 ,name:"sangli"},
 
 ];
+
     const {serviceId}=useParams();
    console.log(serviceId);
   //  const 
@@ -99,6 +100,7 @@ getinfo();
     {
       profileData&&about&&<AboutUS about={about}/>
     }
+    
     <div className='w-100% h-72 m-3'>
     <h1 className='text-xl font-bold m-2'>Service Location</h1>
       {/* <MapComponent zoom={5}  locations={[{latitude:16.84,longitude:74.5987,name:"sangli"},{latitude:18.5204303,longitude: 73.8567437,name:"kupwad"}]} center={[16.04,745987]}/> */}

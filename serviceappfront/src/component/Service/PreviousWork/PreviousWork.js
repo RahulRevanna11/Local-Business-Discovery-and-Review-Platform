@@ -97,6 +97,11 @@ const navigate = useNavigate();
         await createProviousWork(token,formData);
         // If no errors, you can proceed with form submission or further processing
         console.log('Form submitted:', formData);
+        const clearedFormData = Object.fromEntries(
+            Object.keys(formData).map((key) => [key, ''])
+          );
+          setFormData(clearedFormData);
+        
     };
     
     return (

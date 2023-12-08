@@ -42,13 +42,13 @@ exports.createProviousWork = async (req, res) => {
   
       const savedProviousWork = await newProviousWork.save();
       if (service) {
-        const service = await Service.findByIdAndUpdate(
+        const serviceDetails = await Service.findByIdAndUpdate(
             service,
           { $push: { proviousWorks: savedProviousWork._id } },
           { new: true, runValidators: true }
         );
   
-        if (!service) {
+        if (!serviceDetails) {
           return res.status(404).json({ error: 'Service not found' });
         }
       }

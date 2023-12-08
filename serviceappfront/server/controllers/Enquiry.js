@@ -9,7 +9,7 @@ exports.createEnquiry=async(req,res)=>{
       const {  name ,contact,   message  ,address,serviceId,availableDate,availableTime}=req.body;
   const sender=req.user.id;
 console.log(req.body)
-      if(!name||!message||!contact||!serviceId||!address||!availableDate||!availableTime||!sender)
+      if(!name||!message||!contact||!serviceId||!address||!sender)
     {
         return res.status(400).json({
             success:false,

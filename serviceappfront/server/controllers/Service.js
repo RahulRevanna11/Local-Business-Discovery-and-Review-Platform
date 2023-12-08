@@ -334,7 +334,7 @@ exports.createEnquiry = async (req, res) => {
         );
 
    
-    return res.status(400).json({
+    return res.status(200).json({
       success:true,
       message:"enquiry  done successfully",
       data:savedEnquiry,

@@ -135,6 +135,11 @@ useOnClickOutside(ref, () => setSidebarOpen(false));
             Contact
           </Link>
         </li>
+        <li>
+          <Link to="/dashboard/my-profile" className="block px-4 py-2 hover:bg-blue-600">
+            Dashboard
+          </Link>
+        </li>
       </ul>
     </div>
   );
