@@ -1,22 +1,19 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import ContactUs from "./page/ContactUs";
-import Home from "./component/HomePage";
 import Profile from "./page/Profile";
 import Login from "./page/Login";
-import Navbar from "./component/common/Navbar.js";
+import Navbar from "./component/common/navbar";
 import Dashbord from "./page/Dashbord";
 import MyProfile from "./component/Dashboard/MyProfile";
-import RateService from "./page/RateService";
+import RateService from "./page/RateService.js";
 import ServiceProviders from "./page/serviceProviderList";
 import Settings from "./component/Settings/index.js";
 import Service from "./component/Service/index";
 import EditService from "./component/Service/EditService.js"
 import ServiceEnquireList from "./component/Service/Inquire/ServiceInquireList.js";
-import UHomePage from "./component/uHomePage/HomePage.js";
 import AddService from "./component/Service/AddService.js";
 import OpenRoute from "./component/Auth/OpenRoute.js";
-import PrivateRoute from "./component/Auth/PrivateRoute.js";
 import VerifyEmail from "./page/VerifyEmail.js";
 import Signup from "./page/Signup.js";
 import ForgotPassword from "./page/ForgotPassword.js";
@@ -25,7 +22,6 @@ import KeywordServices from "./page/KeywordServices.js";
 import UserEnquireList from  "./component/Service/Inquire/UserEnquireList.js"
 import PreviousWork from "./component/Service/PreviousWork/PreviousWork.js";
 import Footer from "./component/common/Footer.js";
-import Navigation from "./component/uHomePage/Navigation.jsx";
 import HomePage from "./component/uHomePage/HomePage.js";
 import ProviousWorkWditMain from "./component/Service/PreviousWork/ProviousWorkWditMain.js";
 function App() {

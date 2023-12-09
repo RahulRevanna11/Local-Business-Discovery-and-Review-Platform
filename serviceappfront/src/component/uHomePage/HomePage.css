@@ -99,7 +99,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  margin-top: 7.2rem;
+  margin-top: 5rem;
 }
 .showcasecontainer {
   display: flex;
@@ -110,7 +110,7 @@
   font-size: 1.5rem;
 }
 .maintitle {
-  font-size: 5rem;
+  font-size: 4rem;
 }
 .subtitle {
   font-size: 2.5rem;
@@ -173,7 +173,7 @@
 
 /* ############# Food Types #####################  */
 .foodarea {
-  padding: 5rem 0 10rem 0;
+  padding: 0rem 0 5rem 0;
 }
 .foodarea h2 {
   text-align: center;

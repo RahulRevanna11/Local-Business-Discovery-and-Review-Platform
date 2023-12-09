@@ -30,7 +30,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="mt-[100px] sm:mx-auto sm:w-full sm:max-w-md ">
+    <div className="mt-[50px] sm:mx-auto sm:w-full sm:max-w-md ">
       <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
       <form onSubmit={handleOnSubmit} className="space-y-6">
 

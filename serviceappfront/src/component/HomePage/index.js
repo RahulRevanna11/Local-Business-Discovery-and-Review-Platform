@@ -1,8 +1,5 @@
 import React from "react";
-import Navbar from "../common/Navbar";
-import SearchBar from "./searchbar";
 import Div1 from './homeDiv1'
-import Div2 from "./homeDiv2";
 // import Div3 from "./homeDiv3";
 import Div4 from "./homeDiv4";
 // import Footer from './footer/footer'

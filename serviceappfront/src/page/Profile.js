@@ -7,11 +7,7 @@ import ProfileImages from '../component/Profile/ProfileImages';
 import QuickInfo from '../component/Profile/QuickInfo';
 import RatingAndReviers from '../component/Profile/RatingAndReviers';
 import AboutUS from '../component/Profile/aboutUS';
-import Navbar from '../component/common/Navbar';
-
 import QuestionAnswer from '../component/Profile/QuestionAnswer';
-import EnquireNow from '../component/Profile/EnquireNow';
-
 import MapComponent from '../component/common/MapComponent';
 import { useSelector } from 'react-redux';
 import ImageSlider from '../component/common/ImageSlider';

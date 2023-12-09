@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ReactStars from "react-rating-stars-component";
-import download from "../assets/download.jpeg";
 import { useParams } from "react-router";
 import { createRating } from "../services/oprerations/serviceAPIs";
 import { useSelector } from "react-redux";

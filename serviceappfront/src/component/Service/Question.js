@@ -73,7 +73,7 @@ const Question = ({ data, index }) => {
       </form>
 
       <button
-        className={`bg-blue-400 p-3 mx-2 rounded-lg ${isEdit && "hidden"}`}
+        className={`bg-blue-400 p-2 mx-2 rounded-lg h-10 ${isEdit && "hidden"}`}
         onClick={handleClick}
       >
         {" "}

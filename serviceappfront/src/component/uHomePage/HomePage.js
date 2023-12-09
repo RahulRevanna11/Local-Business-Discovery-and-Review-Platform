@@ -363,7 +363,7 @@ import Services from './Services';
 import Features from './Features';
 import {About} from './About';
 import Reviews from './Reviews';
-import {Contact} from './Contact';
+import {Contact} from './contact.jsx';
 import Footer from '../common/Footer';
 
 // import Div4 from "../HomePage/homeDiv4";
@@ -375,8 +375,6 @@ const HomePage = () => {
     <div>
        {/* <Navigation></Navigation> */}
        <Header></Header>
-       <HomeDiv3/>
-       <Div4/>
        <Services></Services>
        <Features></Features>
        <About></About>

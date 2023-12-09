@@ -84,12 +84,12 @@ export default function ProfileDropdown() {
   if (!user) return null;
 
   return (
-    <button className="relative text-lg font-normal" onClick={() => setOpen(true)}>
+    <button className="relative text-lg font-normal " onClick={() => setOpen(true)}>
       <div className="flex items-center gap-x-2 w-20"> {/* Increased the width */}
         <img
           src={user?.image}
           alt={`profile-${user?.firstName}`}
-          className="aspect-square lg:w-[50px] md:w-[40px] rounded-full object-contain"
+          className="aspect-square lg:w-[50px] md:w-[40px] h-10 rounded-full object-contain"
         />
         <AiOutlineCaretDown className="text-xl text-gray-100" /> {/* Increased the text size */}
       </div>

@@ -26,11 +26,11 @@ const Navigation = () => {
                         <li><a href="#testimonial">Testimonial</a></li>
                         <li><a href="#contact">Contact</a></li>
                         {token===null&& <li>
-                  <Link className="text-white hover:text-gray-300   p-2 rounded-xl border-2 bg-gray-600" to="/Login" >Login </Link>
+                            <button className="text-white hover:text-gray-300 p-1 rounded-xl border-2 bg-gray-600 h-10 w-24" to="/Login" >Login </button>
                 </li>
                 }
                { token===null&&<li>
-                  <Link className="text-white hover:text-gray-300   p-2 rounded-xl border-2 bg-gray-600" to="/signup" >Sign In </Link>
+                <button className="text-white hover:text-gray-300 p-1 rounded-xl border-2 bg-gray-600 h-10 w-24" to="/signup" >Sign In </button>
                 </li>
                  }
                  {
