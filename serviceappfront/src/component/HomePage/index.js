@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../common/navbar";
+import Navbar from "../common/Navbar";
 import SearchBar from "./searchbar";
 import Div1 from './homeDiv1'
 import Div2 from "./homeDiv2";

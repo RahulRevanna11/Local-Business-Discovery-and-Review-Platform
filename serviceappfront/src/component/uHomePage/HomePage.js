@@ -361,9 +361,9 @@ import Navigation from './Navigation';
 import Header from './Header';
 import Services from './Services';
 import Features from './Features';
-import About from './About';
+import {About} from './About';
 import Reviews from './Reviews';
-import Contact from './Contact';
+import {Contact} from './Contact';
 import Footer from '../common/Footer';
 
 // import Div4 from "../HomePage/homeDiv4";

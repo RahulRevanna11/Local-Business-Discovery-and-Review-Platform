@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // rafce
 import contactUs from "../assets/contactUs/contactUs.jpg";
-import Navbar from "../component/common/navbar";
+import Navbar from "../component/common/Navbar";
 import { Form } from "react-router-dom";
 import { useSelector } from "react-redux";
 const ContactUs = () => {

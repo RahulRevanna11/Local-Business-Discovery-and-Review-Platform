@@ -4,7 +4,7 @@ import ContactUs from "./page/ContactUs";
 import Home from "./component/HomePage";
 import Profile from "./page/Profile";
 import Login from "./page/Login";
-import Navbar from "./component/common/navbar";
+import Navbar from "./component/common/Navbar.js";
 import Dashbord from "./page/Dashbord";
 import MyProfile from "./component/Dashboard/MyProfile";
 import RateService from "./page/RateService";
