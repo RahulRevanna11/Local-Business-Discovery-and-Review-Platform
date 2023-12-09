@@ -1,78 +1,68 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import LikeButton from '../button/LikeBtn';
-// import Chat from '../chat/chat';
 import { FaTimes } from 'react-icons/fa';
-import ReactStars from "react-rating-stars-component";
+import ReactStars from 'react-rating-stars-component';
 import ImageSlider from '../common/ImageSlider';
-import unknown from "../../assets/unknown.png"
-const defaultData = {
-    image: 'your_default_image_url',
-    rating: '4.5',
-    location: 'New York, USA',
-    tag: 'Travel',
-    phoneNumber: '123-456-7890',
-};
+import unknown from '../../assets/unknown.png';
 
-const HorizontalCard = ({ data }) => {
-    // data = data || defaultData;
+const Card = ({ data }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-    const [isOpen, setIsOpen] = useState(false);
+  const toggleChat = () => {
+    setIsOpen(!isOpen);
+  };
 
-    const toggleChat = () => {
-        setIsOpen(!isOpen);
-    };
+  return (
+    <div className="bg-white rounded-lg mt-5 sm:mt-10 md:mt-16 lg:mt-20 shadow-lg flex flex-col md:flex-row md:w-[70%] mx-auto">
+      {/* Image Section */}
+      <div className="md:w-1/3 relative">
+        {data && data.images && data.images.length > 0 ? (
+          <ImageSlider images={data.images} count={1} dots={false} />
+        ) : (
+          <img src={unknown} alt="Item" className="w-full h-full object-cover" />
+        )}
+        {isOpen && (
+          <div className="fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <button onClick={toggleChat}><FaTimes /></button>
+          </div>
+        )}
+      </div>
 
-    return (
-        <div className="bg-white rounded-lg  mt-20 Sshadow-lg  flex border-slate-400 border-2 w-[70%]">
-            <div className='h-50 w-52 m-5 border-slate-400 border-2'>
-                {/* <img src={data.image} alt="Item" className="w-full h-40 object-cover" /> */}
-                {
-                    data&&!data?.images.length>0?(<img src={unknown} alt="Item" className="w-[100%] h-[100% ] " />):(
-                
-                    
-                    <ImageSlider images={data?.images} count={1} dots={false}  />)
-                }
-            </div>
-            {isOpen &&
-                <div className='fixed left-[33.33%] top-[33.33%] '>
-                    <button onClick={toggleChat}>< FaTimes /></button>
-                    {/* <Chat /> */}
-                </div>}
-            <div className='position: relative left-[52%] '> <LikeButton /></div>
-            <div className="w-3/5 p-4">
-                <div className="text-2xl font-bold">{data.name} </div>
-                <div className="text-lg mt-2">{data.address}</div>
-                <div className='flex mt-2 '>
-                   { data?.tag&&<div className="text-lg  m-1 border-slate-400 border-2 max-w-max p-1 rounded-lg">{data.tag}</div>}
-                    {/* <div className="text-lg  m-1 border-slate-400 border-2 max-w-max p-1 rounded-lg">Plumbining</div> */}
-                </div>
-                <div>
-                <ReactStars
-                    edit={false}
-                  count={5}
-                  // onChange={ratingChanged}
-                  size={25}
-                  isHalf={false}
-                  value={data.avgRating}
-                  emptyIcon={<i className="far fa-star"></i>}
-                  // halfIcon={<i className="fa fa-star-half-alt"></i>}
-                  fullIcon={<i className="fa fa-star"></i>}
-                  activeColor="#ffd700"
-                  
-                />
-                </div>
-                <div className="flex items-center mt-4">
-                    <button className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 `rounded mr-2">Enquire</button>
-                   
-                </div>
-                <div>
-                    <p>Year of Expirance {data?.year_of_establishment}</p>
-                </div>
-                {/* <div className="text-lg mt-4 font-bold">Phone Number: {data?.owner?.mobile}</div> */}
-            </div>
+      {/* Content Section */}
+      <div className="md:w-2/3 p-4 max-w-full overflow-x-auto">
+        <div className="text-2xl font-bold mb-2">{data.name}</div>
+        <div className="text-lg mb-2">{data.address}</div>
+        <div className="flex flex-wrap mb-2">
+          {data && data.tag && (
+            <div className="text-lg m-1 border-slate-400 border-2 p-1 rounded-lg">{data.tag}</div>
+          )}
         </div>
-    );
+        <div className="mb-2">
+          <ReactStars
+            edit={false}
+            count={5}
+            size={25}
+            isHalf={false}
+            value={data.avgRating}
+            emptyIcon={<i className="far fa-star"></i>}
+            fullIcon={<i className="fa fa-star"></i>}
+            activeColor="#ffd700"
+          />
+        </div>
+        <div className="flex items-center mb-2">
+          <button className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded mr-2">Enquire</button>
+        </div>
+        <div>
+          <p>Year of Experience {data.year_of_establishment}</p>
+        </div>
+      </div>
+
+      {/* Like Button Section */}
+      <div className="md:absolute bottom-0 right-0 p-4">
+        <LikeButton />
+      </div>
+    </div>
+  );
 };
 
-export default HorizontalCard;
+export default Card;

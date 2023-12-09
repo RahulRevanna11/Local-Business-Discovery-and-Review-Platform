@@ -33,94 +33,89 @@ const ProfileDescription = (props) => {
     // console.log(toastId);
   };
   return (
-    <div class="flex flex-col md:flex-row md:align-top md:mt-10 rounded-lg gap-6 border-2 lg:mx-5 justify-between min-w-min">
-      <div class="m-10 inline-block">
+    <div className="flex flex-col md:flex-row md:align-top md:mt-10 rounded-lg gap-6 border-2 lg:mx-5 justify-between min-w-min">
+      <div className="m-10 inline-block">
         <img
           src={props?.owner?.image}
-          class="w-full md:w-[40vh] rounded-lg object-cover"
+          className="w-full md:w-[40vh] rounded-lg object-cover"
           alt="jkfd"
         />
       </div>
-      <div class="mt-3 lg:ml-[20vh] flex flex-col gap max-w-full md:max-w-[60vw] inline">
-        <h2 class="text-black text-3xl font-bold from-stone-300 p-2">
+      <div className="mt-3 lg:mt-0 lg:ml-5 flex flex-col gap max-w-full md:max-w-[60vw] inline ml-2 mr-2">
+        <h2 className="text-black text-3xl font-bold from-stone-300 p-2">
           {props.name}
         </h2>
-      { props?.address&& <h2 class="text-gray-500 text-xl font-bold from-stone-300 p-2">
-          {props?.address}
-        </h2>}
-        <div class="flex flex-row gap-3 justify-center">
-          <p class="bg bg-green-500 inline px-2 py-1 rounded-lg">
-            {props?.avgRating ? props?.avgRating : 0}
+        {props?.address && (
+          <h2 className="text-gray-500 text-xl font-bold from-stone-300 p-2">
+            {props?.address}
+          </h2>
+        )}
+        <div className="flex flex-row gap-3 items-center justify-center md:justify-start">
+          <p className="bg-green-500 inline px-2 py-1 rounded-lg text-white text-sm md:text-base">
+            {props?.avgRating || 0}
           </p>
           <ReactStars
             count={5}
-            size={30}
+            size={20} // Adjust as needed
             isHalf={true}
             value={3}
-            emptyIcon={<i class="far fa-star"></i>}
-            halfIcon={<i class="fa fa-star-half-alt"></i>}
-            fullIcon={<i class="fa fa-star"></i>}
+            emptyIcon={<i className="far fa-star"></i>}
+            halfIcon={<i className="fa fa-star-half-alt"></i>}
+            fullIcon={<i className="fa fa-star"></i>}
             activeColor="#ffd700"
           />
-          <p class="text-lg text-gray-600 font-bold mt-2">
-            {props?.contact ? props?.contact : 0}
+          <p className="text-lg text-gray-600 font-bold mt-2">
+            {props?.contact || 0}
           </p>
         </div>
-        <div class="flex mt-2 gap-4">
-          <div class="font-semibold flex gap-2">
+        <div className="flex mt-2 gap-4 flex-wrap">
+          <div className="font-semibold flex gap-2">
             <MdOutlineInsights />
-            {props?.totalEnquires ? props.totalEnquires : "0"} People recently
-            enquired
+            {props?.totalEnquires || 0} People recently enquired
           </div>
-          <p class="bg-gray-500 inline p-1 rounded-md">
-            Since{" "}
+          <p className="bg-gray-500 inline p-1 rounded-md text-white text-sm md:text-base">
+            Since{' '}
             <span className="text-white px-1">
-              {props?.year_of_establishment ? props?.year_of_establishment : 0.1}
-            </span>{" "}
+              {props?.year_of_establishment || 0.1}
+            </span>{' '}
             Year
           </p>
         </div>
-        <div class="flex flex-col md:flex-row justify-between mt-4 font-semibol gap-4 md:mt-1">
-          <div class="bg-green-600 rounded-xl p-2 flex justify-center hover:bg-green-700 hover:scale-110 transition duration-150 ease-out hover:ease-in">
-            <IoIosCall class="font-bold text-2xl mr-2 text-white" />
-            <p class="text-white font-bold text-xl md:text-md">
-              {props?.owner?.mobile ? props?.owner?.mobile : "not available"}
+        <div className="flex flex-col mt-6 pt-6 md:flex-row justify-between font-semibold gap-4 md:mt-1">
+          <div className="bg-green-600 h-8 p-1 rounded-xl pl-2 pr-2 flex justify-center hover:bg-green-700 hover:scale-110 transition duration-150 ease-out hover:ease-in">
+            <IoIosCall className="font-bold text-xl md:text-2xl mr-2 text-white" />
+            <p className="text-white h-2 p-0 text-base md:text-md">
+              {props?.owner?.mobile || 'not available'}
             </p>
           </div>
-          {/* <div class="rounded-lg p-2 flex gap-2 justify-center border-gray-200 border-2 hover:scale-110 transition duration-150 ease-out hover:ease-in">
-        <BsWhatsapp class="text-2xl font-bold text-green-600" />
-        <p class="text-lg font-">Chat</p>
-      </div> */}
-          <div class="text-md p-2 border-gray-100 border-2 rounded-lg hover:scale-110 transition duration-150 ease-out hover:ease-in flex gap-2 items-center">
-            <RiAiGenerate class="text-xl mt-1 text-red-500" />
-
-            <p >
+          <div className="text-md p-2 h-8 border-gray-100 border-2 rounded-lg hover:scale-110 transition duration-150 ease-out hover:ease-in flex gap-2 items-center">
+            <RiAiGenerate className="text-xl mt-1 text-red-500" />
+            <p>
               <Link
-                to={`/addRating/${props?._id}/${"empty"}/${props?.name} `}
-                className="inline-block bg-pink-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full custom-button"
+                to={`/addRating/${props?._id}/${'empty'}/${props?.name} `}
+                className="inline-block bg-pink-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded-full custom-button text-sm md:text-base"
               >
                 Tap to Rate
-              </Link>{" "}
+              </Link>{' '}
             </p>
           </div>
-          <div class="text-md p-2 border-gray-100 border-2 rounded-lg hover:scale-110 transition duration-150 ease-out hover:ease-in flex gap-2 justify-center align-center">
-            <FaShare class="text-red-400 font-bold text-lg mt-1" />
-            <p onClick={handleClick}>Share</p>
+          <div className="text-md border-gray-100 px-2 h-8 border-2 rounded-lg hover:scale-110 transition duration-150 ease-out hover:ease-in flex gap-2 justify-center align-center">
+            <FaShare className="flex flex-col h-6 md:flex-row justify-between mt-4 font-semibold gap-4 md:mt-1 ml-2 mr-2" />
+            <p onClick={handleClick} >Share</p>
           </div>
         </div>
         <div
-          class="text-2xl rounded-xl my-5 text-white font-bold inline w-full md:w-44 cursor-pointer "
+          className="text-2xl rounded-xl my-5 text-white font-bold inline w-full md:w-44 cursor-pointer "
           onClick={() =>
             setConfirmationModal({
-              btn1Text: "Logout",
-              btn2Text: "Cancel",
-              // btn1Handler: () => await ,
+              btn1Text: 'Logout',
+              btn2Text: 'Cancel',
               btn2Handler: () => setConfirmationModal(null),
               id: props._id,
             })
           }
         >
-          <div class="p-2 inline w-20 box-border ">
+          <div className="p-2 inline w-20 box-border ">
             <EnquireNow />
           </div>
         </div>
@@ -129,6 +124,7 @@ const ProfileDescription = (props) => {
     </div>
   );
 };
+
 
 export default ProfileDescription;
 

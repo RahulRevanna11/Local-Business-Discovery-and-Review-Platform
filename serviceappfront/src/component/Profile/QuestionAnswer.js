@@ -8,7 +8,7 @@ const QuestionAnswer = ({data}) => {
   return (
 
  
-  <div className='p-2 mx-3 border-2 border-gray-200'>
+  <div className='p-2 mx-3 border-2 border-gray-200 mb-6'>
     <h1 className='p-3 text-xl font-bold '>Question And Answer</h1>
     { data?.map((items,key)=>{
     return   <div key={key} className='p-2'>
