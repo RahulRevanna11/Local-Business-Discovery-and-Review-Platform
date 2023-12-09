@@ -376,6 +376,7 @@ const HomePage = () => {
        {/* <Navigation></Navigation> */}
        <Header></Header>
        <Services></Services>
+       <HomeDiv3 />
        <Features></Features>
        <About></About>
        <Reviews></Reviews>
