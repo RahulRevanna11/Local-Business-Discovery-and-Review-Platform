@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from 'react';
 import { fetchCategories } from '../../services/oprerations/serviceAPIs';
 import { Link } from 'react-router-dom';
+import "./HomePage.css";
 function HomeDiv3() {
     // const ServicesMeta = "http://localhost:1000/services";
 
@@ -36,7 +37,7 @@ function HomeDiv3() {
     // }, []);
 
     return (<div className='mt-12'>
-        <h3 className='text-3xl font-bold text-slate-500 text-center '>Category</h3>
+        <h3 className='menuheading'>Category</h3>
         <div className="flex flex-wrap justify-center items-center gap-12 p-4 bg-customBackground-100 rounded-xl p-10 mt-5">
             {
                allCategories.map((item) => (

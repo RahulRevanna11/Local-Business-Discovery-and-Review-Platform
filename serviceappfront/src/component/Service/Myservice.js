@@ -32,7 +32,7 @@ export default function MyProfile() {
   const navigate = useNavigate();
   console.log(service);
   if (!service) {
-    return <button className="mt-16 ">List Your service</button>;
+    return <button className="mt-16 text-xl mb-4">List Your service</button>;
   }
   if (profileLoading || authLoading) {
     return (

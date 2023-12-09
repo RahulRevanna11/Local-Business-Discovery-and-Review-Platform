@@ -173,7 +173,7 @@
 
 /* ############# Food Types #####################  */
 .foodarea {
-  padding: 0rem 0 5rem 0;
+  padding: 0;
 }
 .foodarea h2 {
   text-align: center;
@@ -260,7 +260,7 @@
 .menucontainer {
   display: flex;
   flex-wrap: wrap;
-  padding: 50px 0 30px 0px;
+  padding: 50px 0 0px 0px;
 }
 .menucontainer img {
   display: block;
@@ -301,7 +301,7 @@
 
 /* ################# Review Styling ######################  */
 .reviewarea {
-  padding: 5rem 0;
+  padding: 1rem 0;
   background: rgb(243, 243, 243);
 }
 .reviewtitle {

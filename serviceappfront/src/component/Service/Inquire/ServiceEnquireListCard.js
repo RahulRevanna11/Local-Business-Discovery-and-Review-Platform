@@ -7,59 +7,61 @@ import { updateInquiry } from "../../../services/oprerations/serviceAPIs";
 const ServiceEnquireListCard = ({ data }) => {
   console.log(data)
   const [isEditing, setEditing] = useState(false);
-  const [isResponded, setResponded] = useState(data?.response!=="");
+  const [isResponded, setResponded] = useState(data?.response !== "");
   const [isApproved, setApproved] = useState(data?.approved);
-  const {token}=useSelector((state=>state.auth))
-  const {user}=useSelector((state=>state.profile))
-  const [isUser, setUSER] = useState(user.accountType==="User");
+  const { token } = useSelector((state => state.auth))
+  const { user } = useSelector((state => state.profile))
+  const [isUser, setUSER] = useState(user.accountType === "User");
   const [response, setResponce] = useState(data?.response);
   const handleEdit = () => {
     setEditing(!isEditing);
   };
 
-  const handleRespond = async() => {
+  const handleRespond = async () => {
     setResponded(!isResponded);
-    await updateInquiry({enquiryId:data._id,response:response},token);
+    await updateInquiry({ enquiryId: data._id, response: response }, token);
   };
 
-  const handleApprove = async() => {
+  const handleApprove = async () => {
     setApproved(!isApproved);
-await updateInquiry({approved:true,enquiryId:data._id},token);
+    await updateInquiry({ approved: true, enquiryId: data._id }, token);
 
   };
-const handleChange=(e)=>{
-setResponce(e.target.value);
-console.log(response)
-}
+  const handleChange = (e) => {
+    setResponce(e.target.value);
+    console.log(response)
+  }
   return (
-    <div className="bg-white shadow-md rounded-md p-6 w-full  my-4 ">
-     { !isUser&&<div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold"></h2>
-        <div className="space-x-2">
-          <button
-            className="bg-blue-500 text-white px-3 py-1 rounded"
-            onClick={handleEdit}
-          >
-            {isEditing ? "Save" : "Edit"}
-          </button>
-          <button
-            className={`${
-              isResponded ? "bg-green-500" : "bg-blue-500"
-            } text-white px-3 py-1 rounded`}
-            onClick={handleRespond}
-          >
-            {isResponded ? "Responded" : "Respond"}
-          </button>
-        { data?.availableDate&&data?.availableTime&& <button
-            className={`${
-              isApproved ? "bg-green-500" : "bg-blue-500"
-            } text-white px-3 py-1 rounded`}
-            onClick={handleApprove}
-          >
-            {isApproved ? "Approved" : "Approve"}
-          </button>}
+    <div className="bg-white shadow-md rounded-md p-4 md:p-6 w-full my-4">
+      {!isUser && (
+        <div className="flex flex-col sm:flex-row items-center justify-between mb-4">
+          <h2 className="text-xl font-semibold"></h2>
+          <div className="space-y-2 sm:space-x-2 sm:space-y-0 mt-2 sm:mt-0">
+            <button
+              className="bg-blue-500 text-white px-3 py-1 rounded"
+              onClick={handleEdit}
+            >
+              {isEditing ? "Save" : "Edit"}
+            </button>
+            <button
+              className={`${isResponded ? "bg-green-500" : "bg-blue-500"
+                } text-white px-3 py-1 ml-1 mr-1 rounded`}
+              onClick={handleRespond}
+            >
+              {isResponded ? "Responded" : "Respond"}
+            </button>
+            {data?.availableDate && data?.availableTime && (
+              <button
+                className={`${isApproved ? "bg-green-500" : "bg-blue-500"
+                  } text-white px-3 py-1 ml-1 mr-1 rounded`}
+                onClick={handleApprove}
+              >
+                {isApproved ? "Approved" : "Approve"}
+              </button>
+            )}
+          </div>
         </div>
-      </div>}
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="mb-4">
@@ -112,7 +114,7 @@ console.log(response)
       </div>
 
       <div>
-        {data?.availableDate&&data?.availableTime&&<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {data?.availableDate && data?.availableTime && <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-600">
               Date
@@ -135,7 +137,7 @@ console.log(response)
               disabled
             />
           </div>
-       
+
         </div>}
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-600">
@@ -152,16 +154,14 @@ console.log(response)
           />
         </div>
       </div>
-      {
-          isUser&&data?.availableDate&&data?.availableTime&&<button
-          className={`${
-            data?.approved ? "bg-green-500" : "bg-blue-500"
-          } text-white px-3 py-1 rounded`}
-         
+      {isUser && data?.availableDate && data?.availableTime && (
+        <button
+          className={`${data?.approved ? "bg-green-500" : "bg-blue-500"
+            } text-white px-3 py-1 rounded`}
         >
-          {!response&& !data?.approved ? "Not Approved" : "Approved"}
+          {!response && !data?.approved ? "Not Approved" : "Approved"}
         </button>
-      }
+      )}
     </div>
   );
 };
