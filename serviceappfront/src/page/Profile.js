@@ -13,6 +13,7 @@ import EnquireNow from '../component/Profile/EnquireNow';
 import MapComponent from '../component/common/MapComponent';
 import { useSelector } from 'react-redux';
 import ImageSlider from '../component/common/ImageSlider';
+import ProviousWork from '../component/Profile/ProviousWork';
 const Profile = () => {
   const [confirmationModal, setConfirmationModal] = useState(null);
   // const dispatch=useDispatchcon
@@ -107,6 +108,12 @@ const Profile = () => {
 
         ]} zoom={16} height="300px" width="100%" center={[profileData?.latitude, profileData?.longitude]} youserLocation={{ lat, lng }} />}
       </div>
+
+
+      
+      {
+         profileData&&<ProviousWork serviceId={profileData._id}/>
+      }
 
       {
         profileData?.questionAnswer &&
