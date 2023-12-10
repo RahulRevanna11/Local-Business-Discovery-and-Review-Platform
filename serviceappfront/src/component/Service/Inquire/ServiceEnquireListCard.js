@@ -48,7 +48,7 @@ const ServiceEnquireListCard = ({ data }) => {
                 } text-white px-3 py-1 ml-1 mr-1 rounded`}
               onClick={handleRespond}
             >
-              {isResponded ? "Responded" : "Respond"}
+              {!isResponded ? "Responded" : "Respond"}
             </button>
             {data?.availableDate && data?.availableTime && (
               <button

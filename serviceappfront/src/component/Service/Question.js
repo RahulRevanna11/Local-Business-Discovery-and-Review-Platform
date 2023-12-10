@@ -32,7 +32,7 @@ const Question = ({ data, index }) => {
   };
 
   return (
-    <div className="w-full flex my-4">
+    <div className=" flex flex-col my-4 sm:flex-row md:flex-row ">
       <form onSubmit={(e) => e.preventDefault()}>
         <input
           type="text"

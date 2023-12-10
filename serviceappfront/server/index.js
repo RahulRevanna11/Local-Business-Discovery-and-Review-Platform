@@ -9,6 +9,7 @@ const userRoutes = require("./routes/User");
 // console.log(userRoutes);
 const profileRoutes = require("./routes/Profile");
 const serviceRoutes = require("./routes/Services");
+const SMSSender = require("./utils/SMSSender");
 
 const port = process.env.PORT || 5000;
 app.use(cors({
@@ -45,8 +46,8 @@ app.get("/", (req, res) => {
 //   })
 // );
 
-
-
+// 
+// SMSSender(9096834645,"jhgvh")
 app.listen(port, () => {
   console.log(`your server is successfully activated at port ${port}`);
 });

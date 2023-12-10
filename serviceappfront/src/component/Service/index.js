@@ -124,21 +124,23 @@ const Services = () => {
   const { ratingStats, avg } = calculateAverageAndCountRatings(service?.ratingAndReviews)
   console.log(ratingStats);
   return (
-    <div className="w-full p-8">
-      <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 border-2 border-slate-400 p-4 sm:p-6 rounded-2xl">
+    <div className="w-full p-8 md:p-8 sm:p-0">
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 border-2 border-slate-400 p-4 sm:p-0 rounded-2xl">
         <div className="flex flex-col items-center">
-          <img src={download} className="rounded-xl border shadow-xl w-full sm:w-96 h-64 sm:h-96" alt="Service Image" />
+          <img src={download} className="rounded-xl border shadow-xl w-full sm:w-96 h-64 sm:h-96" alt="Service " />
           <p className="text-xl bg-blue-200 rounded-xl p-2 mt-4">{service?.enquiry?.length} Enquiry</p>
         </div>
         <div className="flex flex-col items-center">
           <p className="text-2xl font-bold border-2 border-zinc-600 p-2">{service?.name}</p>
-          <RatingStar size={50} count={5} value={avg} edit={false} />
+          <RatingStar size={25} count={5} value={avg} edit={false} />
           <p className="bg-green-500 p-4 text-center rounded-2xl text-xl font-bold mt-4">
             {service?.ratingAndReviews?.length} Reviews
           </p>
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 mt-4">
+          <div className="" >
             {[1, 2, 3, 4, 5].map((rating) => (
-              <div key={rating} className="flex items-center gap-4 sm:gap-6 border-3 border-stone-500 p-2 sm:p-4 rounded-xl">
+              <div key={rating} className="flex items-center gap-4 sm:gap-6 border-3 border-stone-500 p-2 sm:p-4 rounded-xl 
+              md:flex-row
+              sm:flex-col">
                 <p className="text-center bg-red-300 text-red-700 rounded-xl p-2 sm:p-4">{ratingStats[rating - 1].count}</p>
                 <RatingStar size={25} count={5} value={rating + 1} edit={false} />
               </div>

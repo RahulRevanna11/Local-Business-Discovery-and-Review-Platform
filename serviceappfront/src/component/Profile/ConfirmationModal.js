@@ -4,6 +4,7 @@ import { createInquiry } from "../../services/oprerations/serviceAPIs"
 import { useSelector } from "react-redux";
 export default function ConfirmationModal({ modalData }) {
   // const currdate= Date.now();s
+  console.log(modalData);
   const [bookAppoinment, setBookAppoinment] = useState(false)
   const [formData, setFormData] = useState({
     message: '',
@@ -31,6 +32,7 @@ export default function ConfirmationModal({ modalData }) {
     console.log(res)
     setLoading(false)
     modalData.btn2Handler();
+    
   };
   return (
     <div className="fixed inset-0 z-[1000] !mt-0 grid place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm">

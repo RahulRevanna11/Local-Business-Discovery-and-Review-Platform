@@ -27,12 +27,12 @@ export default function MyProfile() {
       <h1 className="mb-14 text-3xl font-medium text-richblack-5">
         My Profile
       </h1>
-      <div className="sm:flex sm:items-center sm:justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-4 sm:p-8 px-6 sm:px-12">
+      <div className="sm:flex sm:items-center sm:justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-4 sm:p-8 px-6 sm:px-12 md:gap-3">
         <div className="flex items-center gap-x-4">
           <img
             src={user?.image}
             alt={`profile-${user?.firstName}`}
-            className="aspect-square w-16 sm:w-20 md:w-24 rounded-full object-cover"
+            className="aspect-square w-16 sm:w-18 md:w-24 rounded-full object-cover"
           />
           <div className="space-y-1">
             <p className="text-lg font-semibold text-richblack-5">
@@ -73,7 +73,7 @@ export default function MyProfile() {
         </p>
       </div>
       <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
-        <div className="flex w-full items-center justify-between">
+        <div className="flex w-full items-center justify-between sm:gap-2 md:gap-3">
           <p className="text-lg font-semibold text-richblack-5">
             Personal Details
           </p>

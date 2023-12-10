@@ -34,7 +34,7 @@ console.log(req.body)
             $push:{
                 enquiry :result._id
             }
-        }, {new:true});
+        }, {new:true}).populate('owner');
         //if no rating/Review exist
         console.log(serviceDetails);
         if(!serviceDetails)
@@ -50,8 +50,8 @@ console.log(req.body)
                 enquiry :result._id
             }
         }, {new:true});
-     
-        await SMSSender(serviceDetails.mobile,"New Inquiry is sent to you Please check it out ")
+     console.log(serviceDetails);
+       const x= await SMSSender(serviceDetails.owner.mobile,"New Inquiry is sent to you Please check it out ")
         if(!userDetails)
         return res.status(400).json({
             success:false,

@@ -5,13 +5,13 @@ import { TypeAnimation } from "react-type-animation";
 const Header = () => {
   return (
     <>
-      <section className="showcasearea " id="showcase">
+      <section className="showcasearea bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%" id="showcase ">
         <div className="showcasecontainer">
-          <h1 className="maintitle">FAST, FREE WAY</h1>
+          <h1 className="maintitle1  text-md align-middle ">FAST, FREE WAY</h1>
           {/* <h1 className="maintitle">TO GET EXPERTS</h1> */}
           <div className="max-w-screen-md mx-auto overflow-hidden">
             <div className="min-w-64 min-h-32 mx-auto ">
-            <h1 className="maintitle text-2xl p-5 text-yellow-400 font-bold shadow-md" style={{ maxWidth: '100%', whiteSpace: 'nowrap' }}>
+            <h1 className="maintitle text-2xl p-5 text-yellow-400 font-bold shadow-md line-" style={{ maxWidth: '80vw', whiteSpace: 'wrap' }}>
   <TypeAnimation
     sequence={[
       'TO GET EXPERTS',
@@ -23,13 +23,13 @@ const Header = () => {
       'TO GET EXPERTS',
       1000,
       () => {
-        console.log('Sequence completed');
+        // console.log('Sequence completed');
       },
     ]}
     wrapper="span"
     cursor={true}
     repeat={Infinity}
-    style={{ display: 'inline-block', color: 'green' }}
+    style={{ color: 'green', minHeight:"80vh" ,lineHeight:"10vh" }}
   />
 </h1>
             </div>
