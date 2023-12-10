@@ -1,24 +1,31 @@
 import React, { useState } from "react";
-import { useSelector, useEffect } from "react";
+import {  useEffect } from "react";
 import { getProviousWork } from "../../services/oprerations/serviceAPIs";
+import { useSelector } from 'react-redux';
+
 const ProviousWork = ({ serviceId }) => {
   const { token } = useSelector((state) => state.auth);
 
-  const { loading: AuthLoading } = useSelector((state) => state.auth);
+  // const { loading: AuthLoading } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(null);
   const [data, setData] = useState([]);
   useEffect(() => {
-    const setData = async () => {
+    const fun = async () => {
+      setLoading(true);
       var data = null;
       if (serviceId)
         data = await getProviousWork({ service: serviceId }, token);
-      setData(data);
+      console.log(data);
+      setLoading(false)
+      return data
+
     };
-    setData();
+    const res=fun();
+    setData(res)
   }, []);
-  if (loading || AuthLoading || !data) return <div></div>;
+  if (loading  || data.length===0) return <div className="spinner"></div>;
   return (
-    <div>
+    <div className="p-2 mx-3 border-2 border-gray-200 mb-6">
       {/*  
 
 
@@ -56,7 +63,7 @@ const ProviousWork = ({ serviceId }) => {
 
 
 
-
+PROvious Work
 
       {/* add code here */}
     </div>
