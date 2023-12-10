@@ -19,7 +19,7 @@ import Signup from "./page/Signup.js";
 import ForgotPassword from "./page/ForgotPassword.js";
 import MapComponent from "./component/common/MapComponent.js";
 import KeywordServices from "./page/KeywordServices.js";
-import UserEnquireList from  "./component/Service/Inquire/UserEnquireList.js"
+import UserEnquireList from "./component/Service/Inquire/UserEnquireList.js"
 import PreviousWork from "./component/Service/PreviousWork/PreviousWork.js";
 import Footer from "./component/common/Footer.js";
 import HomePage from "./component/uHomePage/HomePage.js";
@@ -35,15 +35,15 @@ function App() {
     <div>
       <Navbar />
       {/* <Navigation/> */}
-      <MapComponent locations={locations}/>
+      <MapComponent locations={locations} />
       <Routes>
         <Route path="/contactUs" element={<ContactUs />} />
-        <Route path="/" element={<HomePage/>} />
+        <Route path="/" element={<HomePage />} />
         <Route
           path="/services/profile/:serviceId"
           element={<Profile />}
         ></Route>
-       <Route
+        <Route
           path="signup"
           element={
             <OpenRoute>
@@ -51,7 +51,7 @@ function App() {
             </OpenRoute>
           }
         />
-    <Route
+        <Route
           path="login"
           element={
             <OpenRoute>
@@ -60,55 +60,55 @@ function App() {
           }
         />
 
-    <Route
+        <Route
           path="forgot-password"
           element={
             <OpenRoute>
               <ForgotPassword />
             </OpenRoute>
           }
-        />  
+        />
 
-      <Route
+        <Route
           path="verify-email"
           element={
             <OpenRoute>
               <VerifyEmail />
             </OpenRoute>
           }
-        />  
+        />
 
-<Route
+        <Route
           path="/addRating/:serviceId/:image/:name"
           element={<RateService />}
         >
-          </Route>
+        </Route>
         <Route element={<Dashbord />}>
           <Route path="/dashboard/my-profile" element={<MyProfile />} />
-       <Route  path="/dashboard/editservice" element={<EditService/>}/>
-       
-          <Route path="/dashboard/settings" element={<Settings />} />
-           <Route path="/dashboard/my-services" element={<Service />} />
-          <Route path="/dashboard/Inquiry" element={<ServiceEnquireList />} />
-          <Route path="/dashboard/add-service" element={<AddService/>} />
-          <Route path="/dashboard/AddPast-Work" element={<PreviousWork/>} />
+          <Route path="/dashboard/editservice" element={<EditService />} />
 
-          <Route path="/dashboard/InquiryStatus" element={<UserEnquireList/>} />
-          <Route path="/dashboard/Past-Work" element={<ProviousWorkWditMain/>} />
-          
-          </Route>
-         
+          <Route path="/dashboard/settings" element={<Settings />} />
+          <Route path="/dashboard/my-services" element={<Service />} />
+          <Route path="/dashboard/Inquiry" element={<ServiceEnquireList />} />
+          <Route path="/dashboard/add-service" element={<AddService />} />
+          <Route path="/dashboard/AddPast-Work" element={<PreviousWork />} />
+
+          <Route path="/dashboard/InquiryStatus" element={<UserEnquireList />} />
+          <Route path="/dashboard/Past-Work" element={<ProviousWorkWditMain />} />
+
+        </Route>
+
         <Route
           path="/category/:categoryName/:categoryid"
           element={<ServiceProviders />}
         />
-         <Route
+        <Route
           path="/search/:keyword/:lat/:lng"
           element={<KeywordServices />}
         />
-  <Route path="*" element={<div> Not Found</div>} />
+        <Route path="*" element={<div> Not Found</div>} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
