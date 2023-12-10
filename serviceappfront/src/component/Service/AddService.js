@@ -57,7 +57,7 @@ const {token}=useSelector(state=>state.auth)
          
          setLoading(false);
          
-         navigate("dashboard/my-services")
+         navigate("dashboard/login")
   };
 
   if (loading) return (<div className=".spinner"></div>);

@@ -110,7 +110,7 @@ const ProfileDescription = (props) => {
             setConfirmationModal({
               btn1Text: 'Logout',
               btn2Text: 'Cancel',
-              btn2Handler: () => setConfirmationModal(null),
+              btn2Handler: () => {setConfirmationModal(null)},
               id: props._id,
             })
           }
