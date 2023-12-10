@@ -34,7 +34,7 @@ setInfo({...info,[event.target.name]:event.target.value})
   }
   return (
     
-    <div className='my-10  gap-y-6 rounded-md border-[1px] border-richblack-700  p-8 px-12'>
+    <div className='my-10 gap-y-10 rounded-md border-[1px] border-richblack-700  lg:p-8  sm:p-0'>
       <h1 className='text-xl font-bold p-3'>Question and Answer</h1>
       
  {

@@ -19,10 +19,13 @@ const store = configureStore({
 root.render(
   <BrowserRouter>
   <Provider store={store}>
-   <div  > <App/>
+    
+   <div  > 
+<App/>
+</div>
    <Toaster/>
    {/* <Footer/> */}
-   </div>
+
     
  
   </Provider>

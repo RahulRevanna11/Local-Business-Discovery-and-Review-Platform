@@ -34,7 +34,7 @@ const ProfileDescription = (props) => {
   };
   return (
     <div className="flex flex-col md:flex-row md:align-top md:mt-10 rounded-lg gap-6 border-2 lg:mx-5 justify-between min-w-min">
-      <div className="m-10 inline-block">
+      <div className="m-10 block">
         <img
           src={props?.owner?.image}
           className="w-full md:w-[40vh] rounded-lg object-cover"

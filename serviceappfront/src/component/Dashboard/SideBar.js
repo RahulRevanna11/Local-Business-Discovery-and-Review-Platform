@@ -1,17 +1,23 @@
-import { useState } from "react";
+import { useState,useEffect, useRef } from "react";
 import { VscSignOut } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import { sidebarLinks } from "../../data/dashbpard-link";
 import { logout } from "../../services/oprerations/authAPI";
+// import { useState, } from "react";
 // import ConfirmationModal from "../common/";
+// import { GrMenu } from 'react-icons/gr';
 import SidebarLink from "./SiderBarLink";
-
-export default function Sidebar() {
+import useOnClickOutside from '../../hooks/useOnClickOutside';
+export default function Sidebar( ) {
   const { user, loading: profileLoading } = useSelector(
     (state) => state.profile
   );
+
+
+
+
+ ;
   const { loading: authLoading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,11 +31,17 @@ export default function Sidebar() {
       </div>
     );
   }
+
+  
 // console.log(sidebarLinks);
   return (
-    <>
-      <div className="flex h-[calc(100vh-3.5rem)] min-w-[220px] flex-col border-r-[1px] border-r-richblack-700 bg-white 
-      text-black py-10">
+    <div>
+     {/* {isSmallScreen&& <div className="hamburger-menu flex items-center justify-center cursor-pointer m">
+      <GrMenu className="menu-icon text-2xl text-gray-600" />
+    </div>} */}
+     
+       <div className=" flex h-[calc(100vh-3.5rem)] min-w-[220px] flex-col border-r-[1px] border-r-richblack-700 bg-white 
+      text-black py-10  " >
         <div className="flex flex-col">
           {sidebarLinks.map((link) => {
             if (link.type && user?.accountType !== link.type) return null;
@@ -65,6 +77,6 @@ export default function Sidebar() {
         </div>
       </div>
       {/* {confirmationModal && <ConfirmationModal modalData={confirmationModal} />} */}
-    </>
+    </div>
   );
 }

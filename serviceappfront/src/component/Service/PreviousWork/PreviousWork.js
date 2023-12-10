@@ -106,7 +106,7 @@ const navigate = useNavigate();
     
     return (
         <div className="flex items-center justify-center  mt-2">
-            <div className="w-[70%]">
+            <div className="w-[70%] sm:w-[100%]">
                 <h1 className='text-2xl mb-4'>Add Services</h1>
                 <div className="container mx-auto p-4 bg-gray-100 rounded-md shadow-md">
                     <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">

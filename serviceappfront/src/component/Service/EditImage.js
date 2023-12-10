@@ -132,7 +132,8 @@ navigate('/dashboard/editservice')
 
         {
           newImage&&(
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold flex items-center py-2 px-4 rounded" onClick={uploadImage}>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold flex items-center py-2 px-4 rounded 
+            mt-0 sm:mt-3" onClick={uploadImage}>
       <FiUpload className="inline-block mr-2 " />
       Upload Image
      { loading&&<div className="spinner"></div>}

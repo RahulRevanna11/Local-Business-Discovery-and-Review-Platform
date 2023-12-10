@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../component/Dashboard/SideBar";
 import { fetchProfile } from "../services/oprerations/serviceAPIs";
+import { GrMenu } from 'react-icons/gr';
 
 function Dashboard() {
   const [isSidebarVisible, setSidebarVisible] = useState(false);
@@ -49,12 +50,13 @@ function Dashboard() {
   return (
     <div className="flex min-h-[calc(100vh-3.5rem)] mt-20">
       {isSmallScreen && (
-        <button className="h-8 w-24 z-10 bg-slate-400 rounded-3xl absolute text-sm" onClick={toggleSidebar}>
-          {isSidebarVisible ? "Hide Sidebar" : "Show Sidebar"}
+        <button className="h-8 w-8 z-[11] bg-slate-400  absolute text-sm " onClick={toggleSidebar}>
+          {/* {isSidebarVisible ? "Hide Sidebar" : "Show Sidebar"} */}
+          <GrMenu className="menu-icon text-2xl text-gray-600" />
         </button>
       )}
-      <div className={isSmallScreen && !isSidebarVisible ? "hidden" : "block"}>
-        <Sidebar />
+      <div className={isSmallScreen && !isSidebarVisible ? "hidden" : `  ${isSmallScreen?'absolute z-10 ':'block'}`}>
+        <Sidebar  />
       </div>
       <div className="h-[calc(100vh-3.5rem)] flex-1 overflow-auto">
         {!isSidebarVisible && <div className="h-9"/>}
