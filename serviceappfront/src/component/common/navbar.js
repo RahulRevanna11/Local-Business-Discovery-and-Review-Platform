@@ -1,14 +1,18 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import ProfileDropdown from '../Auth/ProfileDropDown';
 import SidebarLink from '../Dashboard/SiderBarLink';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
+import { logout } from '../../services/oprerations/authAPI';
 
 const Sidebar = ({ isSidebarOpen,setSidebarOpen }) => {
   const ref = useRef(null);
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
 useOnClickOutside(ref, () => setSidebarOpen(false));
+const {token}=useSelector(state=>state.auth)
   return (
     <div
       className={`z-[1000] fixed  h-full  w-[70vw] bg-blue-500 mt-14 text-white transition-transform transform sm:translate-x-0 ${
@@ -37,11 +41,36 @@ useOnClickOutside(ref, () => setSidebarOpen(false));
             Contact
           </Link>
         </li>
-        <li>
+       {token&& <li>
           <Link to="/dashboard/my-profile" className="block px-4 py-2 hover:bg-blue-600">
             Dashboard
           </Link>
-        </li>
+        </li>}
+{     token &&   <li className="block px-4 py-2 hover:bg-blue-600"  onClick={() => {
+              console.log("inside onclick lonout");
+              navigate('/');
+              dispatch(logout(navigate));
+              setSidebarOpen(false);
+            }}>
+          logout
+
+        </li>}
+        {     !token &&   <li className="block px-4 py-2 hover:bg-blue-600"  onClick={() => {
+              // console.log("inside onclick lonout");
+              navigate('/login');
+              setSidebarOpen(false);
+            }}>
+          Login
+
+        </li>}
+        {     !token &&   <li className="block px-4 py-2 hover:bg-blue-600"  onClick={() => {
+              // console.log("inside onclick lonout");
+              navigate('/signup');
+              setSidebarOpen(false);
+            }}>
+          SignUp
+
+        </li>}
       </ul>
     </div>
   );
