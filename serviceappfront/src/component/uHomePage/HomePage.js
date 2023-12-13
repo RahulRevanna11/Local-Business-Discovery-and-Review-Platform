@@ -363,7 +363,7 @@ import Services from './Services';
 import Features from './Features';
 import {About} from './About';
 import Reviews from './Reviews';
-import {Contact} from './contact.jsx';
+import Contact from './Contact';
 import Footer from '../common/Footer';
 
 // import Div4 from "../HomePage/homeDiv4";
