@@ -1,19 +1,19 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll'; // Uncomment this line
+
 import ProfileDropdown from '../Auth/ProfileDropDown';
 import SidebarLink from '../Dashboard/SiderBarLink';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 
-const Sidebar = ({ isSidebarOpen,setSidebarOpen }) => {
+const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
   const ref = useRef(null);
-useOnClickOutside(ref, () => setSidebarOpen(false));
+  useOnClickOutside(ref, () => setSidebarOpen(false));
   return (
     <div
-      className={`z-[1000] fixed  h-full  w-[70vw] bg-blue-500 mt-14 text-white transition-transform transform sm:translate-x-0 ${
-        isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      }`}
+      className={`z-[1000] fixed  h-full  w-[70vw] bg-blue-500 mt-14 text-white transition-transform transform sm:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
       ref={ref}
     >
       <ul className="pt-6 space-y-2">
@@ -23,14 +23,14 @@ useOnClickOutside(ref, () => setSidebarOpen(false));
           </Link>
         </li>
         <li>
-          <Link to="#about" className="block px-4 py-2 hover:bg-blue-600">
+          <ScrollLink to="about" smooth={true} className="block px-4 py-2 hover:bg-blue-600">
             About
-          </Link>
+          </ScrollLink>
         </li>
         <li>
-          <Link to="/services" className="block px-4 py-2 hover:bg-blue-600">
+          <ScrollLink to="food" smooth={true} className="block px-4 py-2 hover:bg-blue-600">
             Services
-          </Link>
+          </ScrollLink>
         </li>
         <li>
           <Link to="/contact" className="block px-4 py-2 hover:bg-blue-600">
@@ -73,14 +73,14 @@ function Navbar() {
   return (
     <div>
       {/* Sidebar */}
-    { isSidebarOpen&& <Sidebar isSidebarOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen}/>}
+      {isSidebarOpen && <Sidebar isSidebarOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen} />}
 
       {/* Navbar */}
       <nav className="bg-blue-500 p-4 h-15 fixed z-50 w-[100vw]">
         <div className="container mx-auto">
           <div className="flex justify-between items-center">
             <Link to="/" className="text-white font-bold text-xl">
-             QuickLinks
+              QuickLinks
             </Link>
             {isSmallScreen ? (
               <a
@@ -96,27 +96,21 @@ function Navbar() {
                     Home
                   </Link>
                 </li>
-                
-                <li >
-                  <Link to="#about" className="text-white hover:text-gray-300">
+
+                <li>
+                  <ScrollLink to="about" smooth={true} className="text-white hover:text-gray-300">
                     About
-                  </Link>
+                  </ScrollLink>
                 </li>
                 <li>
-                  <Link
-                    to="#food"
-                    className="text-white hover:text-gray-300"
-                  >
+                  <ScrollLink to="food" smooth={true} className="text-white hover:text-gray-300">
                     Services
-                  </Link>
+                  </ScrollLink>
                 </li>
                 <li>
-                  <Link
-                    to="#foodmenu"
-                    className="text-white hover:text-gray-300"
-                  >
+                  <ScrollLink to="foodmenu" smooth={true} className="text-white hover:text-gray-300">
                     Features
-                  </Link>
+                  </ScrollLink>
                 </li>
                 {!token && (
                   <>

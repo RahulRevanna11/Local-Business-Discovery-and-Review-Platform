@@ -50,9 +50,9 @@ function Dashboard() {
   return (
     <div className="flex min-h-[calc(100vh-3.5rem)] mt-20">
       {isSmallScreen && (
-        <button className="h-8 w-8 z-[11] bg-slate-400  absolute text-sm " onClick={toggleSidebar}>
+        <button className="h-8 w-8 z-[11] bg-slate-400  absolute text-sm ml-[1rem] rounded-[50%] " onClick={toggleSidebar}>
           {/* {isSidebarVisible ? "Hide Sidebar" : "Show Sidebar"} */}
-          <GrMenu className="menu-icon text-2xl text-gray-600" />
+          <GrMenu className="menu-icon text-2xl text-gray-600 ml-[3px]" />
         </button>
       )}
       <div className={isSmallScreen && !isSidebarVisible ? "hidden" : `  ${isSmallScreen?'absolute z-10 ':'block'}`}>
