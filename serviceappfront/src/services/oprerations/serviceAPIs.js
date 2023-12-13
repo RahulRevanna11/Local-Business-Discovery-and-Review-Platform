@@ -35,8 +35,9 @@ export const createService = async (data,token) => {
   }
   // toast.dismiss(toastId);
   console.log(`SERVICE CATAGORIES API RESPONSE ${result}`);
-  localStorage.setItem("service", JSON.stringify(result?.data?.data?.service))
-  setTimeout(()=>{},3000);
+  if (result?.data?.data?.service !== undefined) {
+    localStorage.setItem("service", JSON.stringify(result.data.data.service));
+  }
   toast.dismiss(toastId)
   return result;
   

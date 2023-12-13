@@ -97,6 +97,6 @@ router.post("/updateProviouswork", auth, isBusiness,updateProviousWork);
 
 router.post("/deleteProviouswork",auth, isUser, deleteProviousWork);
 
-router.post("/getProviouswork",auth);
+router.post("/getProviouswork",searchProviousWork);
 
 module.exports = router
