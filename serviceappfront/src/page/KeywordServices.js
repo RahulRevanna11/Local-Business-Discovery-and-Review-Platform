@@ -7,55 +7,81 @@ import { Link } from 'react-router-dom';
 
 
 const KeywordServices = () => {
-    var { keyword,lat,lng } = useParams();
-    lat=lat.split(":")[1];
-    lng=lng.split(":")[1];
-    lng=parseInt(lng)
-    lat=parseInt(lat)
-console.log(lat+lng);
-
+  var { keyword, lat, lng } = useParams();
+  lat = parseFloat(lat.split(":")[1]);
+  lng = parseFloat(lng.split(":")[1]);
+  
+  console.log(lat + lng);
+  
   const [services, setServices] = useState([]);
-  const [loading,setLoading]=useState(false);
-  keyword=keyword.toLowerCase()
-  console.log(keyword.toLowerCase())
-   keyword=keyword.split(":")[1].split(" ");
-  const getServicesByKeyword=async(keyword)=>{
-    const res=await  SearckKeyword(keyword);
-    console.log(res)
-      const ServiceList=[];
-      res?.map((item)=>{
-        item?.service?.map((services)=>{
-ServiceList?.push(services);
-        })
-        function calculateDistance(lat1, lng1, lat2, lng2) {
-            const R = 6371; // Radius of the Earth in kilometers
-            const dLat = (lat2 - lat1) 
-            const dLng = (lng2 - lng1) 
-            
-            return dLat*dLat+dLng*dLng;
-          }
-        //  if(ServiceList.length>0&&lat&&lng)
-        //   {
-            ServiceList.sort((a, b) => {
-              
-                const distanceA = calculateDistance(lat, lng, a.latitude, a.longitude);
-                const distanceB = calculateDistance(lat, lng, b.latitude, b.longitude);
-              console.log(`${a.name}  ${distanceA}`);
-              console.log(`${b.name}  ${distanceB}`);
-                 return distanceA - distanceB;
-              });
-              console.log("sorting");
-          // }
-
-          console.log(ServiceList);
-        setServices(ServiceList);
-      })
-
-  }
+  const [loading, setLoading] = useState(false);
+  
+  keyword = keyword.toLowerCase();
+  const keywordParts = keyword.split(":")[1].split(" ");
+  
+  const getServicesByKeyword = async (keyword) => {
+    const res = await SearckKeyword(keyword);
+    console.log(res);
+  
+    const ServiceList = [];
+  
+    res?.forEach((item) => {
+      item?.service?.forEach((service) => {
+        ServiceList.push(service);
+      });
+  
+      function calculateDistance(lat1, lon1, lat2, lon2) {
+        const R = 6371; // Earth's radius in kilometers
+  
+        // Convert latitude and longitude from degrees to radians
+        const radLat1 = toRadians(lat1);
+        const radLon1 = toRadians(lon1);
+        const radLat2 = toRadians(lat2);
+        const radLon2 = toRadians(lon2);
+  
+        // Calculate the change in coordinates
+        const dLat = radLat2 - radLat1;
+        const dLon = radLon2 - radLon1;
+  
+        // Haversine formula
+        const a =
+          Math.sin(dLat / 2) ** 2 +
+          Math.cos(radLat1) * Math.cos(radLat2) * Math.sin(dLon / 2) ** 2;
+  
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  
+        // Distance in kilometers
+        const distance = R * c;
+  
+        return distance;
+      }
+  
+      function toRadians(degrees) {
+        return degrees * (Math.PI / 180);
+      }
+  
+      if (ServiceList.length > 0 && lat && lng) {
+        ServiceList.sort((a, b) => {
+          const distanceA = calculateDistance(lat, lng, a.latitude, a.longitude);
+          const distanceB = calculateDistance(lat, lng, b.latitude, b.longitude);
+  
+          console.log(`${a.name} ${distanceA}`);
+          console.log(`${b.name} ${distanceB}`);
+  
+          return distanceA - distanceB; // Fix the sorting logic
+        });
+  
+        console.log("sorting");
+      }
+  
+      console.log(ServiceList);
+      setServices(ServiceList);
+    });
+  };
 useEffect(()=>{
 
 setLoading(true);
-getServicesByKeyword(keyword);
+getServicesByKeyword(keywordParts);
 setLoading(false);
 
 },[]);

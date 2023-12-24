@@ -9,6 +9,7 @@ import CitySearch from "./CitySearch";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 
 "react-router";
+import { logout } from "../../services/oprerations/authAPI";
 
 const AddService = () => {
   const { service } = useSelector((state) => state.service);
@@ -38,7 +39,7 @@ const {token}=useSelector(state=>state.auth)
   useEffect(() => {
     const data = fetchSubcategories();
   }, []);
-
+const nvigate=useNavigate();
   const {
     register,
     handleSubmit,
@@ -56,7 +57,7 @@ const {token}=useSelector(state=>state.auth)
          const responce=await createService(data,token)
          
          setLoading(false);
-         
+         logout(navigate);
          navigate("dashboard/login")
   };
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll'; // Uncomment this line
 
 import ProfileDropdown from '../Auth/ProfileDropDown';
@@ -9,8 +9,10 @@ import useOnClickOutside from '../../hooks/useOnClickOutside';
 import { logout } from '../../services/oprerations/authAPI';
 
 const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
   const ref = useRef(null);
-  
+  const {token}=useSelector(state=>state.auth)
   useOnClickOutside(ref, () => setSidebarOpen(false));
   return (
     <div
