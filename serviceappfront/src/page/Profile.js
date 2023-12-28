@@ -48,7 +48,7 @@ const Profile = () => {
     null
   )
   const getinfo = async () => {
-    const result = await apiConnector("POST", 'http://localhost:4000/api/v1/service/get', { serviceId: serviceId.split(':')[1] });
+    const result = await apiConnector("POST", 'https://server-local.vercel.app/api/v1/service/get', { serviceId: serviceId.split(':')[1] });
     setProfileData(result?.data?.data);
     setAbout(result?.data?.data?.about)
     console.log(result);

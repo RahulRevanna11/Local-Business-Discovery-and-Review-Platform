@@ -18,7 +18,7 @@ const ProfileDescription = (props) => {
 
   const handleClick = () => {
     navigator.clipboard.writeText(
-      `localhost:3000/services/profile/serviceId:${props._id}`
+      `https://server-local.vercel.app/services/profile/serviceId:${props._id}`
     );
     const toastId = toast.success("Link Copied Successfully");
     toast.success("Link Copied Successfully", "", "", "3000");
