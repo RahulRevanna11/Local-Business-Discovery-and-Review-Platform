@@ -51,7 +51,7 @@ exports.showAllCategories = async (req, res) => {
 		// console.log(Category)
 		const allCategorys = await Category.find({});
 		
-		res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+		//res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
 		// console.log(allCategorys);
 		return  res.status(200).json({
 			success: true,
